@@ -22,6 +22,7 @@ class CreateCommentsTable extends Migration
             $table->text('comment');
             $table->boolean('read');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

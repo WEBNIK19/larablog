@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('post');
             $table->boolean('allow_comments');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

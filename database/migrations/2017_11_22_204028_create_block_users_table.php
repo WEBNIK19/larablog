@@ -21,6 +21,7 @@ class CreateBlockUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('date_unblock')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
