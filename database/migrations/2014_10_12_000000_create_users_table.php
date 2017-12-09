@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email',100)->unique();
             $table->boolean('email_verify');
             $table->string('email_token');
+            $table->string('api_token');
             $table->string('password');
             $table->boolean('online');
             $table->rememberToken();

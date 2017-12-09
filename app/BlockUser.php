@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BlockUser extends Model
 {
-    protected $table = 'block_users';
+    use SoftDeletes;
 }

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
     		'email'=>"elit15223@ssu.edu.ua",
     		'email_verify'=>1,
     		'email_token'=>"asdfhliu",
+            'api_token'=>'admin1',
     		'password'=>bcrypt("admin"),
     		'online'=>0,
     ]);
