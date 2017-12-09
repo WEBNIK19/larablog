@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     	DB::table('users')->insert(['type_user_id'=>1,
     		'name'=>"Nikita",
     		'email'=>"elit15223@ssu.edu.ua",
-    		'email_verify'=>1,
-    		'email_token'=>"asdfhliu",
+    		//'email_verify'=>1,
+    		//'email_token'=>"asdfhliu",
             'api_token'=>'admin1',
     		'password'=>bcrypt("admin"),
-    		'online'=>0,
+    		//'online'=>0,
     ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\User;
 
@@ -19,31 +20,30 @@ class UserController extends Controller
 		$id = $request->query('user_id');
 
     $data = User::find($id);
-
-		return view('data',['data'=>$data]);
-
+		return response()->json($data);
 	}
 	public function getAllUsers()
 	{
-
+		$data = User::all();
+		return response()->json($data);
 	}
 
-	public function setUser($id=null)
+	public function setUser(Request $request)
 	{
 
 	}
 
-	public function deleteUser($id=null)
+	public function deleteUser(Request $request)
 	{
 
 	}
 
-	public function putUser($id=null)
+	public function putUser(Request $request)
 	{
 
 	}
 
-	public function getUserCurrent()
+	public function getUserCurrent(Request $request)
 	{
 		
 	}
