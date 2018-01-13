@@ -28,8 +28,8 @@ Route::group(['middleware'=>'auth:api'], function () {
 		Route::get("/user/all","Api\UserController@getAllUsers");
 		
 		Route::post("/user","Api\UserController@setUser");
-		Route::put("/user/{user_id}","Api\UserController@putUser");
-		Route::delete("/user/{user_id}","Api\UserController@deleteUser");
+		Route::put("/user","Api\UserController@putUser");
+		Route::delete("/user","Api\UserController@deleteUser");
 
 		Route::get("/type/user/all","Api\TypeUserController@getAllTypes");
 		Route::get("/type/user","Api\TypeUserController@getType");

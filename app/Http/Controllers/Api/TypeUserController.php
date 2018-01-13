@@ -8,5 +8,23 @@ use App\TypeUser;
 
 class TypeUserController extends Controller
 {
-    //
+    function getAllTypes(){
+        
+    }
+
+    function getType(){
+
+    }
+
+    function setType(){
+
+    }
+
+    function putType(){
+
+    }
+
+    function deleteType(){
+    	
+    }
 }
