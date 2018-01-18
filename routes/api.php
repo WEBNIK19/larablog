@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware'=>'auth:api'], function () {
 	
-		Route::get("/user/current","Api\UserController@getCurrentUser");
+		Route::get("/user/current","Api\UserController@getUserCurrent");
 
 		Route::get("/user","Api\UserController@getUser");
 
@@ -31,15 +31,15 @@ Route::group(['middleware'=>'auth:api'], function () {
 		Route::put("/user","Api\UserController@putUser");
 		Route::delete("/user","Api\UserController@deleteUser");
 
-		Route::get("/type/user/all","Api\TypeUserController@getAllTypes");
-		Route::get("/type/user","Api\TypeUserController@getType");
-		Route::post("/type/user","Api\TypeUserController@setType");
-		Route::put("/type/user","Api\TypeUserController@putType");
-		Route::delete("/type/user","Api\TypeUserController@deleteType");
+		Route::get("/type/all","Api\TypeUserController@getAllTypes");
+		Route::get("/type","Api\TypeUserController@getType");
+		Route::post("/type","Api\TypeUserController@setType");
+		Route::put("/type","Api\TypeUserController@putType");
+		Route::delete("/type","Api\TypeUserController@deleteType");
 
-		Route::get("/block/user/all","Api\TypeUserController@getAllBlocks");
-		Route::get("/block/user","Api\TypeUserController@getBlock");
-		Route::post("/block/user","Api\TypeUserController@setBlock");
-		Route::put("/block/user","Api\TypeUserController@putBlock");
-		Route::delete("/block/user","Api\TypeUserController@deleteBlock");
+		Route::get("/block/all","Api\TypeUserController@getAllBlocks");
+		Route::get("/block","Api\TypeUserController@getBlock");
+		Route::post("/block","Api\TypeUserController@setBlock");
+		Route::put("/block","Api\TypeUserController@putBlock");
+		Route::delete("/block","Api\TypeUserController@deleteBlock");
 });

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
     	DB::table('type_users')->insert(['type'=>'admin']);
-
+        DB::table('type_users')->insert(['type'=>'user']);
     	DB::table('users')->insert(['type_user_id'=>1,
     		'name'=>"Nikita",
     		'email'=>"elit15223@ssu.edu.ua",

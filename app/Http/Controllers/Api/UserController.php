@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
+use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\TypeUser;
@@ -18,8 +19,9 @@ class UserController extends Controller
 	public function getUser(Request $request)
 	{
 		$validator = Validator::make($request->all(),[
-			'user_id'=>'required'
+			'user_id'=>'required|exists:users,id'
 		]);
+
 		if($validator->fails()){
 			$data = [
 				'status' => 0,
@@ -40,6 +42,7 @@ class UserController extends Controller
 	public function getAllUsers()
 	{
 		$data = User::all();
+
 		return response()->json($data);
 	}
 
@@ -51,7 +54,8 @@ class UserController extends Controller
 			'password' => 'required|confirmed',
 			'password_confirmation' => 'required',
 			'type_user_id' => 'required|integer|min:1',
-		]); 
+		]);
+
 		if($validator->fails()){
 			$data = [
 				'status' => 0,
@@ -75,17 +79,17 @@ class UserController extends Controller
 				$data = [
 					'status' => 1,
 				];
-
 			}			
 		}
 		
 		return response()->json($data);
+
 	}
 
 	public function deleteUser(Request $request)
 	{
 		$validator = Validator::make($request->all(),[
-			'user_id' => 'required|integer|min:1',
+			'user_id' => 'required|exists:users,id|integer|min:1',
 		]);
 
 		if($validator->fails()){
@@ -94,33 +98,37 @@ class UserController extends Controller
 				'errors' => $validator->errors(),
 			];
 		} else {
-			User::find($request->input('user_id'))->delete();
+			User::destroy($request->input('user_id'));
 			$data = [
 				'status' => 1,
 			];
 		}
-			return response()->json($data);
+
+			return response()->json($data);		
 	}
 
 	public function putUser(Request $request)
 	{
-		$validator = Validator::make([
-			'user_id' => 'required|integer|min:1',
+		$validator = Validator::make($request->all(),[
+			'user_id' => 'required|exists:users,id|integer|min:1',
+			'type_user_id' => 'exists:type_users,id',
 		]);
 
 		if($validator->fails()){
-			$date = [
+			$data = [
 				'status' => 0,
 				'errors' => $validator->errors(),
 			];
 
 		} else {
+
+			$user = User::find($request->input('user_id'));
 
 			$password = $request->input('password');
 			$password_confirmation = $request->input('password_confirmation');
 
 			if(!empty($request->input('type_user_id'))){
-				$type_user_id = TypeUser::where([['id',$request->input('type_user_id')],])->value('id');
+				$user->type_user_id = $type_user_id;
 			} 
 
 			if(!empty($request->input('name'))){
@@ -142,11 +150,9 @@ class UserController extends Controller
 				}
 			}
 
-
-
 			if(!empty($password)&&!empty($password)){
 				if($password == $password_confirmation){
-					$user->password = $request->input('password');
+					$user->password = bcrypt($request->input('password'));
 				} else {
 					$data = [
 						'status' => 0,
@@ -154,10 +160,7 @@ class UserController extends Controller
 					];
 				}				
 			}
-
-			if(!is_null($type_user_id)){
-				$user->type_user_id = $type_user_id;
-			}
+			
 			$user->save();
 
 			$data=[
@@ -175,6 +178,7 @@ class UserController extends Controller
 			'status' => 1,
 			'user'=> Auth::user(),
 		];
+
 		return response()->json($data);
 	}
 }
