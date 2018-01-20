@@ -40,6 +40,5 @@ Route::group(['middleware'=>'auth:api'], function () {
 		Route::get("/block/all","Api\TypeUserController@getAllBlocks");
 		Route::get("/block","Api\TypeUserController@getBlock");
 		Route::post("/block","Api\TypeUserController@setBlock");
-		Route::put("/block","Api\TypeUserController@putBlock");
 		Route::delete("/block","Api\TypeUserController@deleteBlock");
 });

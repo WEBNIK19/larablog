@@ -49,8 +49,8 @@ class UserController extends Controller
 	public function setUser(Request $request)
 	{
 		$validator = Validator::make($request->all(),[
-			'name' => 'required|string',
-			'email' => 'required|string|email|unique:users',
+			'name' => 'required|string|unique:users,name',
+			'email' => 'required|string|email|unique:users,email',
 			'password' => 'required|confirmed',
 			'password_confirmation' => 'required',
 			'type_user_id' => 'required|integer|min:1',
