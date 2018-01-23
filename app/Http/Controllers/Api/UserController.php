@@ -9,6 +9,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\TypeUser;
+use App\Classes\Constants;
 
 class UserController extends Controller
 {
@@ -93,15 +94,19 @@ class UserController extends Controller
 		]);
 
 		if($validator->fails()){
+
 			$data = [
 				'status' => 0,
 				'errors' => $validator->errors(),
 			];
+
 		} else {
-			User::destroy($request->input('user_id'));
-			$data = [
-				'status' => 1,
-			];
+			
+				User::destroy($request->input('user_id'));
+				$data = [
+					'status' => 1,
+				];
+			
 		}
 
 			return response()->json($data);		
@@ -135,7 +140,7 @@ class UserController extends Controller
 				$user->name = $request->input('name');
 			}
 
-			if(!empty($rquest->input('email'))){
+			if(!empty($request->input('email'))){
 				$validator = Validator::make([
 					'email' => "unique:users",
 				]);
