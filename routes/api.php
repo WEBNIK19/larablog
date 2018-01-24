@@ -13,17 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-
+Route::post("/login", "Api\UserController@login");
+Route::post("/register", "Api\UserController@register");
+Route::post("/password/email", "Api\UserController@sendResetLinkEmail");
+Route::post("/reset/password", "Api\UserController@resetEmail");
 
 Route::group(['middleware'=>'auth:api'], function () {
 	
 		Route::get("/user/current","Api\UserController@getUserCurrent");
 		Route::get("/user","Api\UserController@getUser");
-		
+
 		Route::group(['middleware'=>'admin'], function(){
 			Route::get("/user/all","Api\UserController@getAllUsers");
 			Route::post("/user","Api\UserController@setUser");
@@ -43,3 +43,5 @@ Route::group(['middleware'=>'auth:api'], function () {
 		});
 				
 });
+
+		
