@@ -8,4 +8,6 @@ export default {
     token: '',
     createdAt: '',
     updatedAt: '',
+
+    allUsers: '',
 };

@@ -25,5 +25,6 @@ export default {
         notFoundTitle: '404 Page not found',
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
+        userAll: 'Все пользователи',
     },
 };

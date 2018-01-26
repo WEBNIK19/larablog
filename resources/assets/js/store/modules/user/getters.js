@@ -8,4 +8,6 @@ export default {
     passwordConfirmation: state => state.passwordConfirmation,
     createdAt: state => state.createdAt,
     updatedAt: state => state.updatedAt,
+
+    allUsers: state => state.allUsers,
 };

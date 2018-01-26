@@ -228,7 +228,15 @@ class UserController extends Controller
 
 	public function getAllUsers()
 	{
-		$data = User::all();
+        $all_users = User::all();
+
+		$data = [
+		    "status" => 1,
+            "data" => $all_users,
+//            "data" => [
+//                "all_users" => $all_users
+//            ],
+        ];
 
 		return response()->json($data);
 	}

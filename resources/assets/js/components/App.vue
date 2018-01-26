@@ -66,6 +66,11 @@
                                 {{ $t("translation.register") }}
                             </router-link>
                         </router-link>
+                        <router-link :to="{ name: 'user.all' }" tag="li" active-class="active" v-if="!logged">
+                            <router-link :to="{ name: 'user.all' }">
+                                {{ $t("translation.userAll") }}
+                            </router-link>
+                        </router-link>
                     </ul>
                 </div>
             </div>
@@ -86,7 +91,6 @@
         methods: {
             lang(data) {
                 localStorage.setItem('locale', data);
-
                 this.$i18n.locale = data;
                 this.currentLang = data;
                 this.$validator.locale = data;
@@ -107,17 +111,17 @@
     };
 </script>
 
-<style lang="scss">
-    .slide-fade-enter-active {
-        transition: all .2s ease;
-    }
+<!--<style lang="scss">-->
+    <!--.slide-fade-enter-active {-->
+        <!--transition: all .2s ease;-->
+    <!--}-->
 
-    .slide-fade-leave-active {
-        transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
+    <!--.slide-fade-leave-active {-->
+        <!--transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);-->
+    <!--}-->
 
-    .slide-fade-enter, .slide-fade-leave-active {
-        transform: translateX(10px);
-        opacity: 0;
-    }
-</style>
+    <!--.slide-fade-enter, .slide-fade-leave-active {-->
+        <!--transform: translateX(10px);-->
+        <!--opacity: 0;-->
+    <!--}-->
+<!--</style>-->

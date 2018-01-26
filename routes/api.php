@@ -19,13 +19,14 @@ Route::post("/register", "Api\UserController@register");
 Route::post("/password/email", "Api\UserController@sendResetLinkEmail");
 Route::post("/reset/password", "Api\UserController@resetEmail");
 
+Route::get("/user/all","Api\UserController@getAllUsers");
+
 Route::group(['middleware'=>'auth:api'], function () {
-	
+
 		Route::get("/user/current","Api\UserController@getUserCurrent");
 		Route::get("/user","Api\UserController@getUser");
 
 		Route::group(['middleware'=>'admin'], function(){
-			Route::get("/user/all","Api\UserController@getAllUsers");
 			Route::post("/user","Api\UserController@setUser");
 			Route::put("/user","Api\UserController@putUser");
 			Route::delete("/user","Api\UserController@deleteUser");

@@ -36,4 +36,7 @@ export default {
     [types.UPDATED_AT](state, payload) {
         state.updatedAt = payload;
     },
+    [types.ALL_USERS](state, payload) {
+        state.allUsers = payload;
+    },
 };

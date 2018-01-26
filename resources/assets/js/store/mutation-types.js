@@ -7,3 +7,5 @@ export const PASSWORD = 'PASSWORD';
 export const PASSWORD_CONFIRMATION = 'PASSWORD_CONFIRMATION';
 export const CREATED_AT = 'CREATED_AT';
 export const UPDATED_AT = 'UPDATED_AT';
+
+export const ALL_USERS = 'ALL_USERS';

@@ -9,6 +9,8 @@ import PasswordEmail from '../components/auth/PasswordEmail.vue';
 import ResetPassword from '../components/auth/ResetPassword.vue';
 import NotFound from '../components/NotFound.vue';
 
+import AllUsers from '../components/users/AllUsers.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -53,6 +55,14 @@ const routes = [
         path: '/password/reset/:token',
         name: 'auth.reset.password',
         component: ResetPassword,
+        meta: {
+            guest: true,
+        },
+    },
+    {
+        path: '/user/all',
+        name: 'user.all',
+        component: AllUsers,
         meta: {
             guest: true,
         },

@@ -80,6 +80,15 @@ export const checkLogged = async ({ dispatch, commit }) => {
     }
 };
 
+export const getAllUsers = async ({ commit }) => {
+    const result = await user.getAllUsers();
+    if (result.status === 1) {
+        commit(types.ALL_USERS, result.data);
+        return result;
+    }
+    throw result;
+};
+
 export default {
     login,
     logout,
@@ -88,4 +97,6 @@ export default {
     resetPassword,
     getUserCurrent,
     checkLogged,
+
+    getAllUsers,
 };

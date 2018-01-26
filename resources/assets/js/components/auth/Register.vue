@@ -67,7 +67,7 @@
                         });
 
                         this.$router.push({
-                            name: 'home',
+                            name: 'user.all',
                         });
                     } catch (e) {
                         this.$validator.validate('email', 0);

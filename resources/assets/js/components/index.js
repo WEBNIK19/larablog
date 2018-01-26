@@ -27,6 +27,7 @@ Validator.extend('login', {
             valid: value !== 0,
         };
     },
+    getMessage: field => `The ${field} value is not truthy.`,
 });
 
 Validator.extend('unique', {
@@ -43,6 +44,7 @@ Validator.extend('unique', {
             valid: value !== 0,
         };
     },
+    getMessage: field => `The ${field} value is not truthy.`,
 });
 
 Vue.use(CxltToastr, toastrConfigs);
