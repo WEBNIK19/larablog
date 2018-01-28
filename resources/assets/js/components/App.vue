@@ -66,7 +66,7 @@
                                 {{ $t("translation.register") }}
                             </router-link>
                         </router-link>
-                        <router-link :to="{ name: 'user.all' }" tag="li" active-class="active" v-if="!logged">
+                        <router-link :to="{ name: 'user.all' }" tag="li" active-class="active" v-if="logged">
                             <router-link :to="{ name: 'user.all' }">
                                 {{ $t("translation.userAll") }}
                             </router-link>

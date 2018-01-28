@@ -11,7 +11,6 @@
     export default {
         computed: {
             allUsers() {
-                console.log(this.$store.getters.allUsers);
               return this.$store.getters.allUsers;
             },
         },

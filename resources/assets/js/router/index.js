@@ -64,7 +64,7 @@ const routes = [
         name: 'user.all',
         component: AllUsers,
         meta: {
-            guest: true,
+            auth: true,
         },
     },
     // Must be the last entry in array.

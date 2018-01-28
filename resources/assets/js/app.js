@@ -11,9 +11,11 @@ import App from './components/App.vue';
 store.dispatch('checkLogged');
 
 router.beforeEach((to, from, next) => {
+    // console.log(record.meta.auth);
     if (to.matched.some(record => record.meta.auth) && !store.getters.logged) {
         next({
-            name: 'auth.login',
+            // name: 'auth.login',
+            name: 'user.all',
             query: {
                 redirect: to.fullPath,
             },

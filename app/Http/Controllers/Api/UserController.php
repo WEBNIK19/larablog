@@ -375,7 +375,7 @@ class UserController extends Controller
 	{
 		$data = [
 			'status' => 1,
-			'user'=> Auth::user(),
+			'data'=> Auth::user(),
 		];
 
 		return response()->json($data);

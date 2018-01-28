@@ -24,5 +24,10 @@
         mixins: [
             userMixin,
         ],
+        computed: {
+            logged() {
+                return this.$store.getters.logged;
+            },
+        },
     };
 </script>

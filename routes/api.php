@@ -19,10 +19,10 @@ Route::post("/register", "Api\UserController@register");
 Route::post("/password/email", "Api\UserController@sendResetLinkEmail");
 Route::post("/reset/password", "Api\UserController@resetEmail");
 
-Route::get("/user/all","Api\UserController@getAllUsers");
 
 Route::group(['middleware'=>'auth:api'], function () {
 
+Route::get("/user/all","Api\UserController@getAllUsers");
 		Route::get("/user/current","Api\UserController@getUserCurrent");
 		Route::get("/user","Api\UserController@getUser");
 
