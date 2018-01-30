@@ -22,9 +22,9 @@ Route::post("/reset/password", "Api\UserController@resetEmail");
 
 Route::group(['middleware'=>'auth:api'], function () {
 
-Route::get("/user/all","Api\UserController@getAllUsers");
-		Route::get("/user/current","Api\UserController@getUserCurrent");
-		Route::get("/user","Api\UserController@getUser");
+			Route::get("/user/all","Api\UserController@getAllUsers");
+			Route::get("/user/current","Api\UserController@getUserCurrent");
+			Route::get("/user","Api\UserController@getUser");
 
 		Route::group(['middleware'=>'admin'], function(){
 			Route::post("/user","Api\UserController@setUser");

@@ -560,25 +560,6 @@ exports.default = function (fn) {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.5.3' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(14);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,6 +615,25 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.5.3' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(14);
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
+
 
 /***/ }),
 /* 9 */
@@ -11474,15 +11474,15 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(54).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(54).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(1);
-var core = __webpack_require__(6);
-var ctx = __webpack_require__(17);
+var core = __webpack_require__(7);
+var ctx = __webpack_require__(16);
 var hide = __webpack_require__(9);
 var PROTOTYPE = 'prototype';
 
@@ -11547,7 +11547,7 @@ module.exports = $export;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 var IE8_DOM_DEFINE = __webpack_require__(74);
 var toPrimitive = __webpack_require__(75);
 var dP = Object.defineProperty;
@@ -11583,6 +11583,63 @@ module.exports = {};
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__(17);
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports) {
 
 var g;
@@ -11606,63 +11663,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(18);
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
 
 
 /***/ }),
@@ -11751,7 +11751,7 @@ module.exports = function (key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(13).f;
-var has = __webpack_require__(19);
+var has = __webpack_require__(18);
 var TAG = __webpack_require__(2)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -11766,7 +11766,7 @@ module.exports = function (it, tag, stat) {
 "use strict";
 
 // 25.4.1.5 NewPromiseCapability(C)
-var aFunction = __webpack_require__(18);
+var aFunction = __webpack_require__(17);
 
 function PromiseCapability(C) {
   var resolve, reject;
@@ -12085,7 +12085,7 @@ var LIBRARY = __webpack_require__(32);
 var $export = __webpack_require__(12);
 var redefine = __webpack_require__(76);
 var hide = __webpack_require__(9);
-var has = __webpack_require__(19);
+var has = __webpack_require__(18);
 var Iterators = __webpack_require__(15);
 var $iterCreate = __webpack_require__(77);
 var setToStringTag = __webpack_require__(27);
@@ -12244,7 +12244,7 @@ module.exports = document && document.documentElement;
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(20);
+var cof = __webpack_require__(19);
 var TAG = __webpack_require__(2)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () { return arguments; }()) == 'Arguments';
@@ -12273,8 +12273,8 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(7);
-var aFunction = __webpack_require__(18);
+var anObject = __webpack_require__(8);
+var aFunction = __webpack_require__(17);
 var SPECIES = __webpack_require__(2)('species');
 module.exports = function (O, D) {
   var C = anObject(O).constructor;
@@ -12287,7 +12287,7 @@ module.exports = function (O, D) {
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(17);
+var ctx = __webpack_require__(16);
 var invoke = __webpack_require__(97);
 var html = __webpack_require__(39);
 var cel = __webpack_require__(24);
@@ -12330,7 +12330,7 @@ if (!setTask || !clearTask) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (__webpack_require__(20)(process) == 'process') {
+  if (__webpack_require__(19)(process) == 'process') {
     defer = function (id) {
       process.nextTick(ctx(run, id, 1));
     };
@@ -12390,7 +12390,7 @@ module.exports = function (exec) {
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 var isObject = __webpack_require__(14);
 var newPromiseCapability = __webpack_require__(28);
 
@@ -12834,7 +12834,7 @@ new _vue2.default({
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
+var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
@@ -12885,17 +12885,9 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(55);
-// On some exotic environments, it's not clear which object `setimmeidate` was
-// able to install onto.  Search each possibility in the same order as the
-// `setimmediate` library.
-exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
-                       (typeof global !== "undefined" && global.setImmediate) ||
-                       (this && this.setImmediate);
-exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
-                         (typeof global !== "undefined" && global.clearImmediate) ||
-                         (this && this.clearImmediate);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 55 */
@@ -13088,7 +13080,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(30)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(30)))
 
 /***/ }),
 /* 56 */
@@ -15942,7 +15934,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/Home.vue"
+Component.options.__file = "resources\\assets\\js\\components\\Home.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -15951,9 +15943,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6707e3d4", Component.options)
+    hotAPI.createRecord("data-v-85ef4954", Component.options)
   } else {
-    hotAPI.reload("data-v-6707e3d4", Component.options)
+    hotAPI.reload("data-v-85ef4954", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15974,7 +15966,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -16029,7 +16021,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6707e3d4", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-85ef4954", module.exports)
   }
 }
 
@@ -16059,7 +16051,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/auth/Profile.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\Profile.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16068,9 +16060,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-51d9fe8e", Component.options)
+    hotAPI.createRecord("data-v-7c581fac", Component.options)
   } else {
-    hotAPI.reload("data-v-51d9fe8e", Component.options)
+    hotAPI.reload("data-v-7c581fac", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16091,7 +16083,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -16168,7 +16160,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-51d9fe8e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7c581fac", module.exports)
   }
 }
 
@@ -16198,7 +16190,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/auth/Login.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\Login.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16207,9 +16199,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dca5370e", Component.options)
+    hotAPI.createRecord("data-v-5383a42c", Component.options)
   } else {
-    hotAPI.reload("data-v-dca5370e", Component.options)
+    hotAPI.reload("data-v-5383a42c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16238,7 +16230,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -17135,7 +17127,7 @@ __webpack_require__(87);
 __webpack_require__(91);
 __webpack_require__(102);
 __webpack_require__(103);
-module.exports = __webpack_require__(6).Promise;
+module.exports = __webpack_require__(7).Promise;
 
 
 /***/ }),
@@ -17250,7 +17242,7 @@ module.exports = function (Constructor, NAME, next) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 var dPs = __webpack_require__(79);
 var enumBugKeys = __webpack_require__(38);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
@@ -17297,7 +17289,7 @@ module.exports = Object.create || function create(O, Properties) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(13);
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 var getKeys = __webpack_require__(80);
 
 module.exports = __webpack_require__(10) ? Object.defineProperties : function defineProperties(O, Properties) {
@@ -17328,7 +17320,7 @@ module.exports = Object.keys || function keys(O) {
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(19);
+var has = __webpack_require__(18);
 var toIObject = __webpack_require__(25);
 var arrayIndexOf = __webpack_require__(83)(false);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
@@ -17352,7 +17344,7 @@ module.exports = function (object, names) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(20);
+var cof = __webpack_require__(19);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -17406,7 +17398,7 @@ module.exports = function (index, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(19);
+var has = __webpack_require__(18);
 var toObject = __webpack_require__(86);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -17521,11 +17513,11 @@ module.exports = function (done, value) {
 
 var LIBRARY = __webpack_require__(32);
 var global = __webpack_require__(1);
-var ctx = __webpack_require__(17);
+var ctx = __webpack_require__(16);
 var classof = __webpack_require__(40);
 var $export = __webpack_require__(12);
 var isObject = __webpack_require__(14);
-var aFunction = __webpack_require__(18);
+var aFunction = __webpack_require__(17);
 var anInstance = __webpack_require__(92);
 var forOf = __webpack_require__(93);
 var speciesConstructor = __webpack_require__(41);
@@ -17729,7 +17721,7 @@ if (!USE_NATIVE) {
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(27)($Promise, PROMISE);
 __webpack_require__(100)(PROMISE);
-Wrapper = __webpack_require__(6)[PROMISE];
+Wrapper = __webpack_require__(7)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -17808,10 +17800,10 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(17);
+var ctx = __webpack_require__(16);
 var call = __webpack_require__(94);
 var isArrayIter = __webpack_require__(95);
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 var toLength = __webpack_require__(35);
 var getIterFn = __webpack_require__(96);
 var BREAK = {};
@@ -17840,7 +17832,7 @@ exports.RETURN = RETURN;
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(7);
+var anObject = __webpack_require__(8);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -17874,7 +17866,7 @@ module.exports = function (it) {
 var classof = __webpack_require__(40);
 var ITERATOR = __webpack_require__(2)('iterator');
 var Iterators = __webpack_require__(15);
-module.exports = __webpack_require__(6).getIteratorMethod = function (it) {
+module.exports = __webpack_require__(7).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
@@ -17912,7 +17904,7 @@ var macrotask = __webpack_require__(42).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
-var isNode = __webpack_require__(20)(process) == 'process';
+var isNode = __webpack_require__(19)(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -17997,7 +17989,7 @@ module.exports = function (target, src, safe) {
 "use strict";
 
 var global = __webpack_require__(1);
-var core = __webpack_require__(6);
+var core = __webpack_require__(7);
 var dP = __webpack_require__(13);
 var DESCRIPTORS = __webpack_require__(10);
 var SPECIES = __webpack_require__(2)('species');
@@ -18047,7 +18039,7 @@ module.exports = function (exec, skipClosing) {
 // https://github.com/tc39/proposal-promise-finally
 
 var $export = __webpack_require__(12);
-var core = __webpack_require__(6);
+var core = __webpack_require__(7);
 var global = __webpack_require__(1);
 var speciesConstructor = __webpack_require__(41);
 var promiseResolve = __webpack_require__(44);
@@ -18312,7 +18304,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dca5370e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5383a42c", module.exports)
   }
 }
 
@@ -18342,7 +18334,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/auth/Register.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\Register.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -18351,9 +18343,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5f3035c3", Component.options)
+    hotAPI.createRecord("data-v-628ef530", Component.options)
   } else {
-    hotAPI.reload("data-v-5f3035c3", Component.options)
+    hotAPI.reload("data-v-628ef530", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -18382,7 +18374,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -18844,7 +18836,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5f3035c3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-628ef530", module.exports)
   }
 }
 
@@ -18874,7 +18866,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/auth/PasswordEmail.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\PasswordEmail.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -18883,9 +18875,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c9edca5e", Component.options)
+    hotAPI.createRecord("data-v-abec10f8", Component.options)
   } else {
-    hotAPI.reload("data-v-c9edca5e", Component.options)
+    hotAPI.reload("data-v-abec10f8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -18914,7 +18906,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -19147,7 +19139,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c9edca5e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-abec10f8", module.exports)
   }
 }
 
@@ -19177,7 +19169,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/auth/ResetPassword.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\ResetPassword.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -19186,9 +19178,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7ba27ccc", Component.options)
+    hotAPI.createRecord("data-v-5da0c366", Component.options)
   } else {
-    hotAPI.reload("data-v-7ba27ccc", Component.options)
+    hotAPI.reload("data-v-5da0c366", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19217,7 +19209,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -19605,7 +19597,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7ba27ccc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5da0c366", module.exports)
   }
 }
 
@@ -19635,7 +19627,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/NotFound.vue"
+Component.options.__file = "resources\\assets\\js\\components\\NotFound.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -19644,9 +19636,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-078b1bb4", Component.options)
+    hotAPI.createRecord("data-v-075e1f66", Component.options)
   } else {
-    hotAPI.reload("data-v-078b1bb4", Component.options)
+    hotAPI.reload("data-v-075e1f66", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19696,7 +19688,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-078b1bb4", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-075e1f66", module.exports)
   }
 }
 
@@ -19726,7 +19718,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/users/AllUsers.vue"
+Component.options.__file = "resources\\assets\\js\\components\\users\\AllUsers.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -19735,9 +19727,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-49e777f6", Component.options)
+    hotAPI.createRecord("data-v-7c9125f2", Component.options)
   } else {
-    hotAPI.reload("data-v-49e777f6", Component.options)
+    hotAPI.reload("data-v-7c9125f2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19800,7 +19792,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-49e777f6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7c9125f2", module.exports)
   }
 }
 
@@ -21495,7 +21487,7 @@ module.exports = { "default": __webpack_require__(128), __esModule: true };
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(129);
-var $Object = __webpack_require__(6).Object;
+var $Object = __webpack_require__(7).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
@@ -39593,7 +39585,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(135)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(135)(module)))
 
 /***/ }),
 /* 135 */
@@ -60415,7 +60407,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/App.vue"
+Component.options.__file = "resources\\assets\\js\\components\\App.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -60424,9 +60416,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8142f38c", Component.options)
+    hotAPI.createRecord("data-v-117390fa", Component.options)
   } else {
-    hotAPI.reload("data-v-8142f38c", Component.options)
+    hotAPI.reload("data-v-117390fa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -60455,7 +60447,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(6);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -60930,7 +60922,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8142f38c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-117390fa", module.exports)
   }
 }
 

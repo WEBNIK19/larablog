@@ -28,7 +28,7 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             "email" => "required|string|email|max:255",
-            "password" => "required|string|min:1"
+            "password" => "required|string|min:6"
         ]);
 
         if ($validator->fails()) {
@@ -112,11 +112,11 @@ class UserController extends Controller
                 $request->only('email')
             );
 
-            if ($response == Password::RESET_LINK_SENT) {
+            if ($response[1] == Password::RESET_LINK_SENT) {
                 $data = [
                     "status" => 1,
                     "data" => [
-                        "message" => $response,
+                        "message" => $response[0],
                     ],
                 ];
             } else {

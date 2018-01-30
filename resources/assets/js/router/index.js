@@ -67,6 +67,7 @@ const routes = [
             auth: true,
         },
     },
+    
     // Must be the last entry in array.
     {
         path: '*',
