@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Classes\Constants;
+use Illuminate\Routing\Redirector;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Auth;
 
@@ -20,8 +21,7 @@ class Admin
     {   
 
         if(Auth::user()->type_user_id != Constants::USER_TYPE_ADMIN){
-
-            throw new AccessDeniedHttpException('Not anough rights');
+            return redirect('home');
         }
 
         return $next($request);

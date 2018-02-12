@@ -1,5 +1,6 @@
 export default {
     id: 0,
+    user_id: 0,
     name: '',
     email: '',
     password: '',
@@ -10,4 +11,9 @@ export default {
     updatedAt: '',
 
     allUsers: '',
+    typeUserId: '',
+    getUser: '',
+    setUser: '',
+    putUser: '',
+    deleteUser: '',
 };

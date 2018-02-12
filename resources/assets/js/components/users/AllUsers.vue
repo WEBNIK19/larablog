@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
         <!--{{ allUsers }}-->
-        <ul v-for="user in allUsers">
-            <li>{{ user.name}}</li>
+        <ul>
+            <li v-for="user in allUsers">{{ user.name}} {{user.id}}</li>
         </ul>
     </div>
 </template>

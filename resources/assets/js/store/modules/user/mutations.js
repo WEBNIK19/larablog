@@ -39,4 +39,16 @@ export default {
     [types.ALL_USERS](state, payload) {
         state.allUsers = payload;
     },
+     [types.GET_USER](state, payload) {
+        state.getUser = payload;
+    },
+    [types.SET_USER](state, payload) {
+        state.setUser = payload;
+    },
+    [types.PUT_USER](state, payload) {
+        state.putUser = payload;
+    },
+    [types.DELETE_USER](state, payload) {
+        state.deleteUser = payload;
+    },
 };

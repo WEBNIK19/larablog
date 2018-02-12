@@ -2,6 +2,7 @@ export default {
     translation: {
         en: 'English',
         he: 'עברית',
+        ru: 'Русский',
         login: 'התחברות',
         logout: 'להתנתק',
         register: 'הירשם',

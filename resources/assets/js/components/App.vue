@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <router-link :to="{ name: 'home' }" class="navbar-brand">
-                        Laravel
+                        LARABLOG
                     </router-link>
                 </div>
 
@@ -26,15 +26,18 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ $t(`translation.${currentLang}`) }}
+                                {{ $t(`translation.${currentLang}`) }} 
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li @click="lang('en')">
-                                    <a href="javascript:;">{{ $t("translation.en") }}</a>
+                                    <a href="javascript:;">{{ $t("translation.en")}}</a>
                                 </li>
                                 <li @click="lang('he')">
                                     <a href="javascript:;">{{ $t("translation.he") }}</a>
+                                </li>
+                                <li @click="lang('ru')">
+                                    <a href="javascript:;">{{ $t("translation.ru") }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -69,6 +72,11 @@
                         <router-link :to="{ name: 'user.all' }" tag="li" active-class="active" v-if="logged">
                             <router-link :to="{ name: 'user.all' }">
                                 {{ $t("translation.userAll") }}
+                            </router-link>
+                        </router-link>
+                        <router-link :to="{ name: 'user' }" tag="li" active-class="active" v-if="logged">
+                            <router-link :to="{ name: 'user' }">
+                                {{ $t("translation.user") }}
                             </router-link>
                         </router-link>
                     </ul>

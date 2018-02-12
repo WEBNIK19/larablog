@@ -2,9 +2,11 @@ export default {
     translation: {
         en: 'English',
         he: 'עברית',
+        ru: 'Русский',
         login: 'Login',
         logout: 'Logout',
         register: 'Register',
+        take: 'Apply',
         name: 'Name',
         email: 'Email',
         password: 'Password',
@@ -25,6 +27,9 @@ export default {
         notFoundTitle: '404 Page not found',
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
-        userAll: 'Все пользователи',
+        userAll: 'All users',
+        user: 'User',
+        typeUserId: 'User type id',
+        UserId: 'User id'
     },
 };

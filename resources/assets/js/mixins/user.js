@@ -37,5 +37,13 @@ export default {
                 this.$store.commit(types.PASSWORD_CONFIRMATION, value);
             },
         },
+        typeUserId: {
+            get() {
+                return this.$store.getters.typeUserId;
+            },
+            set(value) {
+                this.$store.commit(types.TYPE_USER_ID, value);
+            }
+        }
     },
 };

@@ -6,9 +6,10 @@ import en from '../lang/en/en';
 import he from '../lang/he/he';
 import validationEn from '../lang/en/validator';
 import validationHe from '../lang/he/validator';
+import validationRu from '../lang/he/validator';
 
 const toastrConfigs = {
-    position: 'top right',
+    position: 'bottom left',
     showDuration: 1000,
     timeOut: 7500,
 };
@@ -20,6 +21,9 @@ Validator.extend('login', {
         },
         he() {
             return he.translation.userNotExistCredentials;
+        },
+        ru() {
+            return ru.translation.userNotExistCredentials;
         },
     },
     async validate(value) {
@@ -38,6 +42,9 @@ Validator.extend('unique', {
         he() {
             return he.translation.emailAlreadyExists;
         },
+        ru() {
+            return ru.translation.emailAlreadyExists;
+        },
     },
     async validate(value) {
         return {
@@ -55,5 +62,6 @@ Vue.use(VeeValidate, {
     dictionary: {
         en: validationEn,
         he: validationHe,
+        ru: validationRu,
     },
 });
