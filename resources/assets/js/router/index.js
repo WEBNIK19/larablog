@@ -10,6 +10,7 @@ import ResetPassword from '../components/auth/ResetPassword.vue';
 import NotFound from '../components/NotFound.vue';
 
 import AllUsers from '../components/users/AllUsers.vue';
+import SetUser from '../components/users/SetUser.vue';
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,14 @@ const routes = [
         path: '/user/all',
         name: 'user.all',
         component: AllUsers,
+        meta: {
+            auth: true,
+        },
+    },
+    {
+        path: '/user/set',
+        name: 'user.set',
+        component: SetUser,
         meta: {
             auth: true,
         },
