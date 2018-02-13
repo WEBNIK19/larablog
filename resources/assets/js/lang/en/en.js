@@ -29,5 +29,6 @@ export default {
         profile: 'Profile',
         userAll: 'Все пользователи',
         userSet: ' Set user',
+        typeUser: 'TypeUser'
     },
 };
