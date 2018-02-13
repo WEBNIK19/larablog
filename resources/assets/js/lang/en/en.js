@@ -26,5 +26,6 @@ export default {
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
         userAll: 'Все пользователи',
+        userSet: ' Set user',
     },
 };
