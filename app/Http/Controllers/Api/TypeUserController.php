@@ -10,10 +10,13 @@ use Validator;
 
 class TypeUserController extends Controller
 {
-    public function getAllTypes(Request $request){
+    public function getAllTypes(){
 
-        $data = TypeUser::all();
-
+        $types_all = TypeUser::all();
+        $data = [
+            "status" => 1,
+            "data" =>  $types_all,          
+        ];
         return response()->json($data);
 
     }

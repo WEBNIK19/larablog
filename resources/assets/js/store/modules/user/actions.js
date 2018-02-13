@@ -89,17 +89,8 @@ export const getAllUsers = async ({ commit }) => {
     throw result;
 };
 
-export const getUser = async ({ commit }, payload) => {
-    const result = await user.getUser(payload);
-    if (result.status === 1) {
-        commit(types.GET_USER, result.data);
-        return result;
-    }
-    throw result;
-};
-
 export const setUser = async ({ commit }, payload) => {
-    const result = await user.setUser(payload);
+    const result = await user.setUser(payload.data);
     if (result.status === 1) {
         commit(types.SET_USER, result.data);
         return result;
@@ -107,19 +98,10 @@ export const setUser = async ({ commit }, payload) => {
     throw result;
 };
 
-export const putUser = async ({ commit }, payload) => {
-    const result = await user.putUser(payload);
+export const getAllTypes = async ({ commit }) => {
+    const result = await user.getAllTypes();
     if (result.status === 1) {
-        commit(types.PUT_USER, result.data);
-        return result;
-    }
-    throw result;
-};
-
-export const deleteUser = async ({ commit }, payload) => {
-    const result = await user.deleteUser(payload);
-    if (result.status === 1) {
-        commit(types.DELETE_USER, result.data);
+        commit(types.ALL_TYPES, result.data);
         return result;
     }
     throw result;
@@ -135,8 +117,6 @@ export default {
     checkLogged,
 
     getAllUsers,
-    getUser,
+    getAllTypes,
     setUser,
-    putUser,
-    deleteUser,
 };

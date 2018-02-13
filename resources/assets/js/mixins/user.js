@@ -44,6 +44,7 @@ export default {
             set(value) {
                 this.$store.commit(types.TYPE_USER_ID, value);
             }
-        }
+        },
+        
     },
 };

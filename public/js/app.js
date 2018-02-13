@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(47);
+var bind = __webpack_require__(48);
 
 /*global toString:true*/
 
@@ -511,7 +511,7 @@ module.exports = function normalizeComponent (
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(67);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
@@ -523,7 +523,7 @@ module.exports = __webpack_require__(67);
 
 exports.__esModule = true;
 
-var _promise = __webpack_require__(69);
+var _promise = __webpack_require__(70);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -621,6 +621,7 @@ exports.default = {
                 this.$store.commit(types.TYPE_USER_ID, value);
             }
         }
+
     }
 };
 
@@ -11482,7 +11483,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(54).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(55).setImmediate))
 
 /***/ }),
 /* 12 */
@@ -11556,8 +11557,8 @@ module.exports = $export;
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(8);
-var IE8_DOM_DEFINE = __webpack_require__(74);
-var toPrimitive = __webpack_require__(75);
+var IE8_DOM_DEFINE = __webpack_require__(75);
+var toPrimitive = __webpack_require__(76);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(10) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -11692,8 +11693,12 @@ var PASSWORD = exports.PASSWORD = 'PASSWORD';
 var PASSWORD_CONFIRMATION = exports.PASSWORD_CONFIRMATION = 'PASSWORD_CONFIRMATION';
 var CREATED_AT = exports.CREATED_AT = 'CREATED_AT';
 var UPDATED_AT = exports.UPDATED_AT = 'UPDATED_AT';
+
 var ALL_USERS = exports.ALL_USERS = 'ALL_USERS';
+var ALL_TYPES = exports.ALL_TYPES = 'ALL_TYPES';
+
 var TYPE_USER_ID = exports.TYPE_USER_ID = 'TYPE_USER_ID';
+var SET_USER = exports.SET_USER = 'SET_USER';
 
 /***/ }),
 /* 22 */
@@ -11736,7 +11741,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(82);
+var IObject = __webpack_require__(83);
 var defined = __webpack_require__(23);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -11817,10 +11822,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(48);
+    adapter = __webpack_require__(49);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(48);
+    adapter = __webpack_require__(49);
   }
   return adapter;
 }
@@ -12091,13 +12096,13 @@ process.umask = function() { return 0; };
 
 var LIBRARY = __webpack_require__(32);
 var $export = __webpack_require__(12);
-var redefine = __webpack_require__(76);
+var redefine = __webpack_require__(77);
 var hide = __webpack_require__(9);
 var has = __webpack_require__(18);
 var Iterators = __webpack_require__(15);
-var $iterCreate = __webpack_require__(77);
+var $iterCreate = __webpack_require__(78);
 var setToStringTag = __webpack_require__(27);
-var getPrototypeOf = __webpack_require__(85);
+var getPrototypeOf = __webpack_require__(86);
 var ITERATOR = __webpack_require__(2)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -12296,7 +12301,7 @@ module.exports = function (O, D) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(16);
-var invoke = __webpack_require__(97);
+var invoke = __webpack_require__(98);
 var html = __webpack_require__(39);
 var cel = __webpack_require__(24);
 var global = __webpack_require__(1);
@@ -12506,6 +12511,52 @@ exports.default = {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    translation: {
+        en: 'English',
+        he: 'עברית',
+        ru: 'Русский',
+        login: 'Войти',
+        logout: 'Выйти',
+        register: 'Зарегистрироваться',
+        take: 'Запросить',
+        name: 'Имя',
+        email: 'Электронный адрес',
+        password: 'Пароль',
+        confirmPassword: 'Подтвердите пароль',
+        sendPasswordResetLink: 'Прислать ссылку для сброса пароля',
+        homepage: 'Домой',
+        forgotPassword: 'Забыли пароль?',
+        userNotExistCredentials: 'Этот пользователь не существует.',
+        emailAlreadyExists: 'Данный адрес уже использован.',
+        emailHasBeenSent: 'Email has been sent!',
+        checkEmailBox: 'Проверьте почту.',
+        emailHasNotBeenSent: 'Email has not been sent!',
+        tryAgain: 'Попробуйте ещё раз.',
+        success: 'Успех',
+        passwordHasBeenChanged: 'Пароль был изменён',
+        error: 'Ошибка',
+        resetPassword: 'Сброс пароля',
+        notFoundTitle: '404 Страница не найдена',
+        notFoundText: 'Мы не можем найти страницу которую вы ищите.',
+        profile: 'Профиль',
+        userAll: 'Все пользователи',
+        user: 'Пользователь',
+        typeUserId: 'Идентификатор типа пользователя',
+        UserId: 'Идентификатор пользователя'
+    }
+};
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 module.exports = function bind(fn, thisArg) {
   return function wrap() {
     var args = new Array(arguments.length);
@@ -12518,7 +12569,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12529,7 +12580,7 @@ var settle = __webpack_require__(146);
 var buildURL = __webpack_require__(148);
 var parseHeaders = __webpack_require__(149);
 var isURLSameOrigin = __webpack_require__(150);
-var createError = __webpack_require__(49);
+var createError = __webpack_require__(50);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(151);
 
 module.exports = function xhrAdapter(config) {
@@ -12702,7 +12753,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12726,7 +12777,7 @@ module.exports = function createError(message, config, code, response) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12738,7 +12789,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12764,15 +12815,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(53);
+__webpack_require__(54);
 module.exports = __webpack_require__(170);
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12782,17 +12833,17 @@ var _vue = __webpack_require__(11);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuexRouterSync = __webpack_require__(56);
+var _vuexRouterSync = __webpack_require__(57);
 
-var _router = __webpack_require__(57);
+var _router = __webpack_require__(58);
 
 var _router2 = _interopRequireDefault(_router);
 
-var _store = __webpack_require__(122);
+var _store = __webpack_require__(123);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _lang = __webpack_require__(134);
+var _lang = __webpack_require__(135);
 
 var _lang2 = _interopRequireDefault(_lang);
 
@@ -12845,7 +12896,7 @@ new _vue2.default({
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -12898,13 +12949,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(55);
+__webpack_require__(56);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -13097,7 +13148,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(30)))
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 exports.sync = function (store, router, options) {
@@ -13178,7 +13229,7 @@ function cloneRoute (to, from) {
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13192,45 +13243,45 @@ var _vue = __webpack_require__(11);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(58);
+var _vueRouter = __webpack_require__(59);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _Home = __webpack_require__(59);
+var _Home = __webpack_require__(60);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Profile = __webpack_require__(62);
+var _Profile = __webpack_require__(63);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
-var _Login = __webpack_require__(65);
+var _Login = __webpack_require__(66);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Register = __webpack_require__(105);
+var _Register = __webpack_require__(106);
 
 var _Register2 = _interopRequireDefault(_Register);
 
-var _PasswordEmail = __webpack_require__(108);
+var _PasswordEmail = __webpack_require__(109);
 
 var _PasswordEmail2 = _interopRequireDefault(_PasswordEmail);
 
-var _ResetPassword = __webpack_require__(111);
+var _ResetPassword = __webpack_require__(112);
 
 var _ResetPassword2 = _interopRequireDefault(_ResetPassword);
 
-var _NotFound = __webpack_require__(114);
+var _NotFound = __webpack_require__(115);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _AllUsers = __webpack_require__(116);
+var _AllUsers = __webpack_require__(117);
 
 var _AllUsers2 = _interopRequireDefault(_AllUsers);
 
-var _User = __webpack_require__(119);
+var _setUser = __webpack_require__(120);
 
-var _User2 = _interopRequireDefault(_User);
+var _setUser2 = _interopRequireDefault(_setUser);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13283,9 +13334,9 @@ var routes = [{
         auth: true
     }
 }, {
-    path: '/user',
-    name: 'user',
-    component: _User2.default,
+    path: '/user/set',
+    name: 'user.set',
+    component: _setUser2.default,
     meta: {
         auth: true
     }
@@ -13304,7 +13355,7 @@ exports.default = new _vueRouter2.default({
 });
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15935,15 +15986,15 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(61)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -15982,7 +16033,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16018,7 +16069,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -16052,15 +16103,15 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(63)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(64)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -16099,7 +16150,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16143,7 +16194,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -16191,15 +16242,15 @@ if (false) {
 }
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(66)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(104)
+var __vue_template__ = __webpack_require__(105)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -16238,7 +16289,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16364,7 +16415,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -16389,7 +16440,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(68);
+module.exports = __webpack_require__(69);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -16405,7 +16456,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 /**
@@ -17138,37 +17189,37 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(70), __esModule: true };
-
-/***/ }),
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(71);
+module.exports = { "default": __webpack_require__(71), __esModule: true };
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
 __webpack_require__(72);
-__webpack_require__(87);
-__webpack_require__(91);
-__webpack_require__(102);
+__webpack_require__(73);
+__webpack_require__(88);
+__webpack_require__(92);
 __webpack_require__(103);
+__webpack_require__(104);
 module.exports = __webpack_require__(7).Promise;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(73)(true);
+var $at = __webpack_require__(74)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(31)(String, 'String', function (iterated) {
@@ -17187,7 +17238,7 @@ __webpack_require__(31)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(22);
@@ -17210,7 +17261,7 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(10) && !__webpack_require__(33)(function () {
@@ -17219,7 +17270,7 @@ module.exports = !__webpack_require__(10) && !__webpack_require__(33)(function (
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -17237,19 +17288,19 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(9);
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create = __webpack_require__(78);
+var create = __webpack_require__(79);
 var descriptor = __webpack_require__(34);
 var setToStringTag = __webpack_require__(27);
 var IteratorPrototype = {};
@@ -17264,12 +17315,12 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(8);
-var dPs = __webpack_require__(79);
+var dPs = __webpack_require__(80);
 var enumBugKeys = __webpack_require__(38);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -17311,12 +17362,12 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(13);
 var anObject = __webpack_require__(8);
-var getKeys = __webpack_require__(80);
+var getKeys = __webpack_require__(81);
 
 module.exports = __webpack_require__(10) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -17330,11 +17381,11 @@ module.exports = __webpack_require__(10) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(81);
+var $keys = __webpack_require__(82);
 var enumBugKeys = __webpack_require__(38);
 
 module.exports = Object.keys || function keys(O) {
@@ -17343,12 +17394,12 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(18);
 var toIObject = __webpack_require__(25);
-var arrayIndexOf = __webpack_require__(83)(false);
+var arrayIndexOf = __webpack_require__(84)(false);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -17366,7 +17417,7 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -17378,14 +17429,14 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(25);
 var toLength = __webpack_require__(35);
-var toAbsoluteIndex = __webpack_require__(84);
+var toAbsoluteIndex = __webpack_require__(85);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -17407,7 +17458,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(22);
@@ -17420,12 +17471,12 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(18);
-var toObject = __webpack_require__(86);
+var toObject = __webpack_require__(87);
 var IE_PROTO = __webpack_require__(26)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
@@ -17439,7 +17490,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
@@ -17450,10 +17501,10 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(88);
+__webpack_require__(89);
 var global = __webpack_require__(1);
 var hide = __webpack_require__(9);
 var Iterators = __webpack_require__(15);
@@ -17475,13 +17526,13 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(89);
-var step = __webpack_require__(90);
+var addToUnscopables = __webpack_require__(90);
+var step = __webpack_require__(91);
 var Iterators = __webpack_require__(15);
 var toIObject = __webpack_require__(25);
 
@@ -17516,14 +17567,14 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -17532,7 +17583,7 @@ module.exports = function (done, value) {
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17544,11 +17595,11 @@ var classof = __webpack_require__(40);
 var $export = __webpack_require__(12);
 var isObject = __webpack_require__(14);
 var aFunction = __webpack_require__(17);
-var anInstance = __webpack_require__(92);
-var forOf = __webpack_require__(93);
+var anInstance = __webpack_require__(93);
+var forOf = __webpack_require__(94);
 var speciesConstructor = __webpack_require__(41);
 var task = __webpack_require__(42).set;
-var microtask = __webpack_require__(98)();
+var microtask = __webpack_require__(99)();
 var newPromiseCapabilityModule = __webpack_require__(28);
 var perform = __webpack_require__(43);
 var promiseResolve = __webpack_require__(44);
@@ -17714,7 +17765,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(99)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(100)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -17746,7 +17797,7 @@ if (!USE_NATIVE) {
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(27)($Promise, PROMISE);
-__webpack_require__(100)(PROMISE);
+__webpack_require__(101)(PROMISE);
 Wrapper = __webpack_require__(7)[PROMISE];
 
 // statics
@@ -17765,7 +17816,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(101)(function (iter) {
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(102)(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -17812,7 +17863,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(101)(functio
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -17823,15 +17874,15 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(16);
-var call = __webpack_require__(94);
-var isArrayIter = __webpack_require__(95);
+var call = __webpack_require__(95);
+var isArrayIter = __webpack_require__(96);
 var anObject = __webpack_require__(8);
 var toLength = __webpack_require__(35);
-var getIterFn = __webpack_require__(96);
+var getIterFn = __webpack_require__(97);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -17854,7 +17905,7 @@ exports.RETURN = RETURN;
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -17872,7 +17923,7 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -17886,7 +17937,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__(40);
@@ -17900,7 +17951,7 @@ module.exports = __webpack_require__(7).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -17922,7 +17973,7 @@ module.exports = function (fn, args, that) {
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(1);
@@ -17996,7 +18047,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var hide = __webpack_require__(9);
@@ -18009,7 +18060,7 @@ module.exports = function (target, src, safe) {
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18030,7 +18081,7 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR = __webpack_require__(2)('iterator');
@@ -18058,7 +18109,7 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18085,7 +18136,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18104,7 +18155,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18335,15 +18386,15 @@ if (false) {
 }
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = __webpack_require__(107)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(108)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18382,7 +18433,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18520,7 +18571,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18867,15 +18918,15 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(110)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(111)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18914,7 +18965,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19030,7 +19081,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19170,15 +19221,15 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(113)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(114)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19217,7 +19268,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19355,7 +19406,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19628,7 +19679,7 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -19636,7 +19687,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(116)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19675,7 +19726,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19719,15 +19770,15 @@ if (false) {
 }
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(117)
+var __vue_script__ = __webpack_require__(118)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(119)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19766,7 +19817,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19797,7 +19848,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19824,15 +19875,15 @@ if (false) {
 }
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(120)
+var __vue_script__ = __webpack_require__(121)
 /* template */
-var __vue_template__ = __webpack_require__(121)
+var __vue_template__ = __webpack_require__(122)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19849,7 +19900,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\users\\User.vue"
+Component.options.__file = "resources\\assets\\js\\components\\users\\setUser.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -19858,9 +19909,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d0ee1f54", Component.options)
+    hotAPI.createRecord("data-v-6fcb6f32", Component.options)
   } else {
-    hotAPI.reload("data-v-d0ee1f54", Component.options)
+    hotAPI.reload("data-v-6fcb6f32", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19871,7 +19922,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19897,8 +19948,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_user2.default],
+    data: function data() {
+        return {
+            progress: false,
+            userName: '',
+            userEmail: '',
+            userPassword: '',
+            userPasswordConfirmation: ''
+        };
+    },
+
+    computed: {
+        allTypes: function allTypes() {
+            return this.$store.getters.allTypes;
+        }
+    },
     methods: {
-        getUser: function getUser() {
+        setUser: function setUser() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -19906,96 +19972,56 @@ exports.default = {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                _context.next = 2;
-                                return _this.$store.dispatch('getUser', {
-                                    user_id: _this.user_id
+                                _this.$validator.validateAll();
+
+                                if (_this.errors.any()) {
+                                    _context.next = 13;
+                                    break;
+                                }
+
+                                _this.progress = true;
+
+                                _context.prev = 3;
+                                _context.next = 6;
+                                return _this.$store.dispatch('setUser', {
+                                    name: _this.userName,
+                                    email: _this.userEmail,
+                                    password: _this.userPassword,
+                                    password_confirmation: _this.userPasswordConfirmation,
+                                    type_user_id: _this.typeUserId
                                 });
 
-                            case 2:
+                            case 6:
+
+                                _this.$router.push({
+                                    name: 'user.all'
+                                });
+                                _context.next = 13;
+                                break;
+
+                            case 9:
+                                _context.prev = 9;
+                                _context.t0 = _context['catch'](3);
+
+                                _this.$validator.validate('email', 0);
+
+                                _this.progress = false;
+
+                            case 13:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this);
-            }))();
-        },
-        putUser: function putUser() {
-            var _this2 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-                return _regenerator2.default.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _this2.$store.dispatch('putUser', {
-                                    user_id: _this2.user_id
-                                });
-
-                            case 2:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, _this2);
-            }))();
-        },
-        setUser: function setUser() {
-            var _this3 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-                return _regenerator2.default.wrap(function _callee3$(_context3) {
-                    while (1) {
-                        switch (_context3.prev = _context3.next) {
-                            case 0:
-                                _context3.next = 2;
-                                return _this3.$store.dispatch('setUser', {
-                                    name: _this3.name,
-                                    email: _this3.email,
-                                    password: _this3.password,
-                                    password_confirmation: _this3.passwordConfirmation
-                                });
-
-                            case 2:
-                            case 'end':
-                                return _context3.stop();
-                        }
-                    }
-                }, _callee3, _this3);
-            }))();
-        },
-        deletetUser: function deletetUser() {
-            var _this4 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
-                return _regenerator2.default.wrap(function _callee4$(_context4) {
-                    while (1) {
-                        switch (_context4.prev = _context4.next) {
-                            case 0:
-                                _context4.next = 2;
-                                return _this4.$store.dispatch('deleteUser', {
-                                    user_id: _this4.user_id
-                                });
-
-                            case 2:
-                            case 'end':
-                                return _context4.stop();
-                        }
-                    }
-                }, _callee4, _this4);
+                }, _callee, _this, [[3, 9]]);
             }))();
         }
     },
-    computed: {
-        user: function user() {
-            return this.$store.getters.getUser;
-        }
+
+    created: function created() {
+        this.$validator.attach('email', 'unique');
     },
-    data: function data() {
-        return {
-            progress: false,
-            user_id: ''
-        };
+    mounted: function mounted() {
+        this.$store.dispatch('getAllTypes');
     },
     beforeDestroy: function beforeDestroy() {
         this.password = '';
@@ -20054,18 +20080,9 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20075,71 +20092,10 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
-        _c(
-          "form",
-          {
-            staticClass: "form-horizontal",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                _vm.getUser($event)
-              }
-            }
-          },
-          [
-            _c(
-              "label",
-              { staticClass: "control-label", attrs: { for: "name" } },
-              [_vm._v(_vm._s(_vm.$t("translation.UserId")))]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user_id,
-                  expression: "user_id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.user_id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.user_id = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "login-btn btn btn-success",
-                attrs: { type: "submit", disabled: this.progress }
-              },
-              [
-                _vm._v(
-                  "\n                                    " +
-                    _vm._s(_vm.$t("translation.take")) +
-                    "\n                            "
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("pre", [_vm._v(_vm._s(_vm.user))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
         _c("div", { staticClass: "panel panel-default" }, [
           _c("div", { staticClass: "panel-heading" }, [
             _c("h3", { staticClass: "panel-title" }, [
-              _vm._v(_vm._s(_vm.$t("translation.user")))
+              _vm._v(_vm._s(_vm.$t("translation.register")))
             ])
           ]),
           _vm._v(" "),
@@ -20172,7 +20128,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label",
-                          attrs: { for: "name" }
+                          attrs: { for: "userName" }
                         },
                         [_vm._v(_vm._s(_vm.$t("translation.name")))]
                       ),
@@ -20182,8 +20138,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.name,
-                            expression: "name"
+                            value: _vm.userName,
+                            expression: "userName"
                           },
                           {
                             name: "validate",
@@ -20194,18 +20150,18 @@ var render = function() {
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          id: "name",
+                          id: "userName",
                           type: "text",
-                          name: "name",
+                          name: "userName",
                           autofocus: ""
                         },
-                        domProps: { value: _vm.name },
+                        domProps: { value: _vm.userName },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.name = $event.target.value
+                            _vm.userName = $event.target.value
                           }
                         }
                       }),
@@ -20233,7 +20189,7 @@ var render = function() {
                     {
                       class: {
                         "form-group": true,
-                        "has-error": _vm.errors.has("email")
+                        "has-error": _vm.errors.has("userEmail")
                       }
                     },
                     [
@@ -20241,7 +20197,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label",
-                          attrs: { for: "email" }
+                          attrs: { for: "userEmail" }
                         },
                         [_vm._v(_vm._s(_vm.$t("translation.email")))]
                       ),
@@ -20251,8 +20207,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.email,
-                            expression: "email"
+                            value: _vm.userEmail,
+                            expression: "userEmail"
                           },
                           {
                             name: "validate",
@@ -20262,15 +20218,19 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { id: "email", type: "email", name: "email" },
-                        domProps: { value: _vm.email },
+                        attrs: {
+                          id: "userEmail",
+                          type: "email",
+                          name: "userEmail"
+                        },
+                        domProps: { value: _vm.userEmail },
                         on: {
                           input: [
                             function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.email = $event.target.value
+                              _vm.userEmail = $event.target.value
                             },
                             function($event) {
                               _vm.$validator.validate("email", 1)
@@ -20302,7 +20262,7 @@ var render = function() {
                     {
                       class: {
                         "form-group": true,
-                        "has-error": _vm.errors.has("password")
+                        "has-error": _vm.errors.has("userPassword")
                       }
                     },
                     [
@@ -20310,7 +20270,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label",
-                          attrs: { for: "password" }
+                          attrs: { for: "userPassword" }
                         },
                         [_vm._v(_vm._s(_vm.$t("translation.password")))]
                       ),
@@ -20320,8 +20280,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.password,
-                            expression: "password"
+                            value: _vm.userPassword,
+                            expression: "userPassword"
                           },
                           {
                             name: "validate",
@@ -20332,17 +20292,17 @@ var render = function() {
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          id: "password",
+                          id: "userPassword",
                           type: "password",
-                          name: "password"
+                          name: "userPassword"
                         },
-                        domProps: { value: _vm.password },
+                        domProps: { value: _vm.userPassword },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.password = $event.target.value
+                            _vm.userPassword = $event.target.value
                           }
                         }
                       }),
@@ -20354,13 +20314,13 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.errors.has("password"),
-                              expression: "errors.has('password')"
+                              value: _vm.errors.has("userPassword"),
+                              expression: "errors.has('userPassword')"
                             }
                           ],
                           staticClass: "help-block"
                         },
-                        [_vm._v(_vm._s(_vm.errors.first("password")))]
+                        [_vm._v(_vm._s(_vm.errors.first("userPassword")))]
                       )
                     ]
                   ),
@@ -20370,7 +20330,7 @@ var render = function() {
                     {
                       class: {
                         "form-group": true,
-                        "has-error": _vm.errors.has("passwordConfirmation")
+                        "has-error": _vm.errors.has("userPasswordConfirmation")
                       }
                     },
                     [
@@ -20378,7 +20338,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label",
-                          attrs: { for: "password-confirmation" }
+                          attrs: { for: "userPasswordConfirmation" }
                         },
                         [_vm._v(_vm._s(_vm.$t("translation.confirmPassword")))]
                       ),
@@ -20388,8 +20348,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.passwordConfirmation,
-                            expression: "passwordConfirmation"
+                            value: _vm.userPasswordConfirmation,
+                            expression: "userPasswordConfirmation"
                           },
                           {
                             name: "validate",
@@ -20400,17 +20360,17 @@ var render = function() {
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          id: "password-confirmation",
+                          id: "userPasswordConfirmation",
                           type: "password",
-                          name: "passwordConfirmation"
+                          name: "userPasswordConfirmation"
                         },
-                        domProps: { value: _vm.passwordConfirmation },
+                        domProps: { value: _vm.userPasswordConfirmation },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.passwordConfirmation = $event.target.value
+                            _vm.userPasswordConfirmation = $event.target.value
                           }
                         }
                       }),
@@ -20422,15 +20382,16 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.errors.has("passwordConfirmation"),
-                              expression: "errors.has('passwordConfirmation')"
+                              value: _vm.errors.has("userPasswordConfirmation"),
+                              expression:
+                                "errors.has('userPasswordConfirmation')"
                             }
                           ],
                           staticClass: "help-block"
                         },
                         [
                           _vm._v(
-                            _vm._s(_vm.errors.first("passwordConfirmation"))
+                            _vm._s(_vm.errors.first("userPasswordConfirmation"))
                           )
                         ]
                       )
@@ -20442,7 +20403,7 @@ var render = function() {
                     {
                       class: {
                         "form-group": true,
-                        "has-error": _vm.errors.has("passwordConfirmation")
+                        "has-error": _vm.errors.has("typeUserId")
                       }
                     },
                     [
@@ -20450,42 +20411,64 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label",
-                          attrs: { for: "type_user_id" }
+                          attrs: { for: "typeUserId" }
                         },
                         [_vm._v(_vm._s(_vm.$t("translation.typeUserId")))]
                       ),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.typeUserId,
-                            expression: "typeUserId"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "type_user_id",
-                          type: "text",
-                          name: "typeUserId"
-                        },
-                        domProps: { value: _vm.typeUserId },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.typeUserId,
+                              expression: "typeUserId"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
                             }
-                            _vm.typeUserId = $event.target.value
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "typeUserId", name: "typeUserId" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.typeUserId = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
                           }
-                        }
-                      })
+                        },
+                        [_c("option")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("typeUserId"),
+                              expression: "errors.has('typeUserId')"
+                            }
+                          ],
+                          staticClass: "help-block"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("typeUserId")))]
+                      )
                     ]
                   ),
                   _vm._v(" "),
@@ -20520,12 +20503,12 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d0ee1f54", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6fcb6f32", module.exports)
   }
 }
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20539,11 +20522,11 @@ var _vue = __webpack_require__(11);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(123);
+var _vuex = __webpack_require__(124);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _user = __webpack_require__(124);
+var _user = __webpack_require__(125);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -20558,7 +20541,7 @@ exports.default = new _vuex2.default.Store({
 });
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21504,7 +21487,7 @@ var index_esm = {
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21514,19 +21497,19 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _actions = __webpack_require__(125);
+var _actions = __webpack_require__(126);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _getters = __webpack_require__(127);
+var _getters = __webpack_require__(128);
 
 var _getters2 = _interopRequireDefault(_getters);
 
-var _mutations = __webpack_require__(128);
+var _mutations = __webpack_require__(129);
 
 var _mutations2 = _interopRequireDefault(_mutations);
 
-var _state = __webpack_require__(133);
+var _state = __webpack_require__(134);
 
 var _state2 = _interopRequireDefault(_state);
 
@@ -21545,7 +21528,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21554,7 +21537,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.deleteUser = exports.putUser = exports.setUser = exports.getUser = exports.getAllUsers = exports.checkLogged = exports.getUserCurrent = exports.resetPassword = exports.passwordEmail = exports.register = exports.logout = exports.login = undefined;
+exports.getAllTypes = exports.setUser = exports.getAllUsers = exports.checkLogged = exports.getUserCurrent = exports.resetPassword = exports.passwordEmail = exports.register = exports.logout = exports.login = undefined;
 
 var _regenerator = __webpack_require__(4);
 
@@ -21564,7 +21547,7 @@ var _asyncToGenerator2 = __webpack_require__(5);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _user = __webpack_require__(126);
+var _user = __webpack_require__(127);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -21895,7 +21878,7 @@ var getAllUsers = exports.getAllUsers = function () {
     };
 }();
 
-var getUser = exports.getUser = function () {
+var setUser = exports.setUser = function () {
     var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(_ref16, payload) {
         var commit = _ref16.commit;
         var result;
@@ -21904,7 +21887,7 @@ var getUser = exports.getUser = function () {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return _user2.default.getUser(payload);
+                        return _user2.default.setUser(payload.data);
 
                     case 2:
                         result = _context9.sent;
@@ -21914,7 +21897,7 @@ var getUser = exports.getUser = function () {
                             break;
                         }
 
-                        commit(types.GET_USER, result.data);
+                        commit(types.SET_USER, result.data);
                         return _context9.abrupt('return', result);
 
                     case 6:
@@ -21928,13 +21911,13 @@ var getUser = exports.getUser = function () {
         }, _callee9, undefined);
     }));
 
-    return function getUser(_x13, _x14) {
+    return function setUser(_x13, _x14) {
         return _ref15.apply(this, arguments);
     };
 }();
 
-var setUser = exports.setUser = function () {
-    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref18, payload) {
+var getAllTypes = exports.getAllTypes = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref18) {
         var commit = _ref18.commit;
         var result;
         return _regenerator2.default.wrap(function _callee10$(_context10) {
@@ -21942,7 +21925,7 @@ var setUser = exports.setUser = function () {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return _user2.default.setUser(payload);
+                        return _user2.default.getAllTypes();
 
                     case 2:
                         result = _context10.sent;
@@ -21952,7 +21935,7 @@ var setUser = exports.setUser = function () {
                             break;
                         }
 
-                        commit(types.SET_USER, result.data);
+                        commit(types.ALL_TYPES, result.data);
                         return _context10.abrupt('return', result);
 
                     case 6:
@@ -21966,84 +21949,8 @@ var setUser = exports.setUser = function () {
         }, _callee10, undefined);
     }));
 
-    return function setUser(_x15, _x16) {
+    return function getAllTypes(_x15) {
         return _ref17.apply(this, arguments);
-    };
-}();
-
-var putUser = exports.putUser = function () {
-    var _ref19 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(_ref20, payload) {
-        var commit = _ref20.commit;
-        var result;
-        return _regenerator2.default.wrap(function _callee11$(_context11) {
-            while (1) {
-                switch (_context11.prev = _context11.next) {
-                    case 0:
-                        _context11.next = 2;
-                        return _user2.default.putUser(payload);
-
-                    case 2:
-                        result = _context11.sent;
-
-                        if (!(result.status === 1)) {
-                            _context11.next = 6;
-                            break;
-                        }
-
-                        commit(types.PUT_USER, result.data);
-                        return _context11.abrupt('return', result);
-
-                    case 6:
-                        throw result;
-
-                    case 7:
-                    case 'end':
-                        return _context11.stop();
-                }
-            }
-        }, _callee11, undefined);
-    }));
-
-    return function putUser(_x17, _x18) {
-        return _ref19.apply(this, arguments);
-    };
-}();
-
-var deleteUser = exports.deleteUser = function () {
-    var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(_ref22, payload) {
-        var commit = _ref22.commit;
-        var result;
-        return _regenerator2.default.wrap(function _callee12$(_context12) {
-            while (1) {
-                switch (_context12.prev = _context12.next) {
-                    case 0:
-                        _context12.next = 2;
-                        return _user2.default.deleteUser(payload);
-
-                    case 2:
-                        result = _context12.sent;
-
-                        if (!(result.status === 1)) {
-                            _context12.next = 6;
-                            break;
-                        }
-
-                        commit(types.DELETE_USER, result.data);
-                        return _context12.abrupt('return', result);
-
-                    case 6:
-                        throw result;
-
-                    case 7:
-                    case 'end':
-                        return _context12.stop();
-                }
-            }
-        }, _callee12, undefined);
-    }));
-
-    return function deleteUser(_x19, _x20) {
-        return _ref21.apply(this, arguments);
     };
 }();
 
@@ -22057,14 +21964,12 @@ exports.default = {
     checkLogged: checkLogged,
 
     getAllUsers: getAllUsers,
-    getUser: getUser,
-    setUser: setUser,
-    putUser: putUser,
-    deleteUser: deleteUser
+    getAllTypes: getAllTypes,
+    setUser: setUser
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22089,7 +21994,7 @@ exports.default = {
         var _this = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
@@ -22098,12 +22003,10 @@ exports.default = {
                             return window.axios.post('/api/login', params);
 
                         case 2:
-                            result = _context.sent;
+                            json = _context.sent;
+                            return _context.abrupt('return', json.data);
 
-                            console.log(result.data);
-                            return _context.abrupt('return', result.data);
-
-                        case 5:
+                        case 4:
                         case 'end':
                             return _context.stop();
                     }
@@ -22115,7 +22018,7 @@ exports.default = {
         var _this2 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee2$(_context2) {
                 while (1) {
                     switch (_context2.prev = _context2.next) {
@@ -22124,12 +22027,10 @@ exports.default = {
                             return window.axios.post('/api/register', params);
 
                         case 2:
-                            result = _context2.sent;
+                            json = _context2.sent;
+                            return _context2.abrupt('return', json.data);
 
-                            console.log(result.data);
-                            return _context2.abrupt('return', result.data);
-
-                        case 5:
+                        case 4:
                         case 'end':
                             return _context2.stop();
                     }
@@ -22141,7 +22042,7 @@ exports.default = {
         var _this3 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee3$(_context3) {
                 while (1) {
                     switch (_context3.prev = _context3.next) {
@@ -22150,10 +22051,10 @@ exports.default = {
                             return window.axios.post('/api/password/email', params);
 
                         case 2:
-                            result = _context3.sent;
+                            json = _context3.sent;
 
                             console.log(result.data);
-                            return _context3.abrupt('return', result.data);
+                            return _context3.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22167,7 +22068,7 @@ exports.default = {
         var _this4 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee4$(_context4) {
                 while (1) {
                     switch (_context4.prev = _context4.next) {
@@ -22176,10 +22077,10 @@ exports.default = {
                             return window.axios.post('/api/reset/password', params);
 
                         case 2:
-                            result = _context4.sent;
+                            json = _context4.sent;
 
                             console.log(result.data);
-                            return _context4.abrupt('return', result.data);
+                            return _context4.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22193,7 +22094,7 @@ exports.default = {
         var _this5 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee5$(_context5) {
                 while (1) {
                     switch (_context5.prev = _context5.next) {
@@ -22202,10 +22103,10 @@ exports.default = {
                             return window.axios.get('/api/user/current');
 
                         case 2:
-                            result = _context5.sent;
+                            json = _context5.sent;
 
                             console.log(result.data);
-                            return _context5.abrupt('return', result.data);
+                            return _context5.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22245,7 +22146,7 @@ exports.default = {
         var _this7 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee7$(_context7) {
                 while (1) {
                     switch (_context7.prev = _context7.next) {
@@ -22254,10 +22155,10 @@ exports.default = {
                             return window.axios.post('/api/user', params);
 
                         case 2:
-                            result = _context7.sent;
+                            json = _context7.sent;
 
                             console.log(result.data);
-                            return _context7.abrupt('return', result.data);
+                            return _context7.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22297,7 +22198,7 @@ exports.default = {
         var _this9 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee9$(_context9) {
                 while (1) {
                     switch (_context9.prev = _context9.next) {
@@ -22306,10 +22207,10 @@ exports.default = {
                             return window.axios.put('/api/user', params);
 
                         case 2:
-                            result = _context9.sent;
+                            json = _context9.sent;
 
                             console.log(result.data);
-                            return _context9.abrupt('return', result.data);
+                            return _context9.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22323,7 +22224,7 @@ exports.default = {
         var _this10 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
-            var result;
+            var json;
             return _regenerator2.default.wrap(function _callee10$(_context10) {
                 while (1) {
                     switch (_context10.prev = _context10.next) {
@@ -22332,10 +22233,10 @@ exports.default = {
                             return window.axios.delete('/api/user', params);
 
                         case 2:
-                            result = _context10.sent;
+                            json = _context10.sent;
 
-                            console.log(result.data);
-                            return _context10.abrupt('return', result.data);
+                            console.log(json.data);
+                            return _context10.abrupt('return', json.data);
 
                         case 5:
                         case 'end':
@@ -22344,11 +22245,35 @@ exports.default = {
                 }
             }, _callee10, _this10);
         }))();
+    },
+    getAllTypes: function getAllTypes(params) {
+        var _this11 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {
+            var json;
+            return _regenerator2.default.wrap(function _callee11$(_context11) {
+                while (1) {
+                    switch (_context11.prev = _context11.next) {
+                        case 0:
+                            _context11.next = 2;
+                            return window.axios.get('api/type/all', { params: params });
+
+                        case 2:
+                            json = _context11.sent;
+                            return _context11.abrupt('return', json.data);
+
+                        case 4:
+                        case 'end':
+                            return _context11.stop();
+                    }
+                }
+            }, _callee11, _this11);
+        }))();
     }
 };
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22360,9 +22285,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     id: function id(state) {
         return state.id;
-    },
-    user_id: function user_id(state) {
-        return state.user_id;
     },
     name: function name(state) {
         return state.name;
@@ -22395,22 +22317,13 @@ exports.default = {
     allUsers: function allUsers(state) {
         return state.allUsers;
     },
-    getUser: function getUser(state) {
-        return state.getUser;
-    },
-    putUser: function putUser(state) {
-        return state.putUser;
-    },
-    setUser: function setUser(state) {
-        return state.setUser;
-    },
-    deleteUser: function deleteUser(state) {
-        return state.deleteUser;
+    allTypes: function allTypes(state) {
+        return state.allTypes;
     }
 };
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22420,7 +22333,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _defineProperty2 = __webpack_require__(129);
+var _defineProperty2 = __webpack_require__(130);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -22462,18 +22375,16 @@ exports.default = (_types$LOGIN$types$LO = {}, (0, _defineProperty3.default)(_ty
     state.updatedAt = payload;
 }), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.ALL_USERS, function (state, payload) {
     state.allUsers = payload;
-}), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.GET_USER, function (state, payload) {
-    state.getUser = payload;
 }), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.SET_USER, function (state, payload) {
     state.setUser = payload;
-}), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.PUT_USER, function (state, payload) {
-    state.putUser = payload;
-}), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.DELETE_USER, function (state, payload) {
-    state.deleteUser = payload;
+}), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.TYPE_USER_ID, function (state, payload) {
+    state.typeUserId = payload;
+}), (0, _defineProperty3.default)(_types$LOGIN$types$LO, types.ALL_TYPES, function (state, payload) {
+    state.ALL_TYPES = payload;
 }), _types$LOGIN$types$LO);
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22481,7 +22392,7 @@ exports.default = (_types$LOGIN$types$LO = {}, (0, _defineProperty3.default)(_ty
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(130);
+var _defineProperty = __webpack_require__(131);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -22503,16 +22414,16 @@ exports.default = function (obj, key, value) {
 };
 
 /***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(131), __esModule: true };
-
-/***/ }),
 /* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(132);
+module.exports = { "default": __webpack_require__(132), __esModule: true };
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(133);
 var $Object = __webpack_require__(7).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
@@ -22520,7 +22431,7 @@ module.exports = function defineProperty(it, key, desc) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(12);
@@ -22529,7 +22440,7 @@ $export($export.S + $export.F * !__webpack_require__(10), 'Object', { defineProp
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22540,7 +22451,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
     id: 0,
-    user_id: 0,
     name: '',
     email: '',
     password: '',
@@ -22551,6 +22461,7 @@ exports.default = {
     updatedAt: '',
 
     allUsers: '',
+    allTypes: '',
     typeUserId: '',
     getUser: '',
     setUser: '',
@@ -22559,7 +22470,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22573,7 +22484,7 @@ var _vue = __webpack_require__(11);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueI18n = __webpack_require__(135);
+var _vueI18n = __webpack_require__(136);
 
 var _vueI18n2 = _interopRequireDefault(_vueI18n);
 
@@ -22585,7 +22496,7 @@ var _he = __webpack_require__(46);
 
 var _he2 = _interopRequireDefault(_he);
 
-var _ru = __webpack_require__(136);
+var _ru = __webpack_require__(47);
 
 var _ru2 = _interopRequireDefault(_ru);
 
@@ -22603,7 +22514,7 @@ exports.default = new _vueI18n2.default({
 });
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23471,52 +23382,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["default"] = (VueI18n);
 
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    translation: {
-        en: 'English',
-        he: 'עברית',
-        ru: 'Русский',
-        login: 'Войти',
-        logout: 'Выйти',
-        register: 'Зарегистрироваться',
-        take: 'Запросить',
-        name: 'Имя',
-        email: 'Электронный адрес',
-        password: 'Пароль',
-        confirmPassword: 'Подтвердите пароль',
-        sendPasswordResetLink: 'Прислать ссылку для сброса пароля',
-        homepage: 'Домой',
-        forgotPassword: 'Забыли пароль?',
-        userNotExistCredentials: 'Этот пользователь не существует.',
-        emailAlreadyExists: 'Данный адрес уже использован.',
-        emailHasBeenSent: 'Email has been sent!',
-        checkEmailBox: 'Проверьте почту.',
-        emailHasNotBeenSent: 'Email has not been sent!',
-        tryAgain: 'Попробуйте ещё раз.',
-        success: 'Успех',
-        passwordHasBeenChanged: 'Пароль был изменён',
-        error: 'Ошибка',
-        resetPassword: 'Сброс пароля',
-        notFoundTitle: '404 Страница не найдена',
-        notFoundText: 'Мы не можем найти страницу которую вы ищите.',
-        profile: 'Профиль',
-        userAll: 'Все пользователи',
-        user: 'Пользователь',
-        typeUserId: 'Идентификатор типа пользователя',
-        UserId: 'Идентификатор пользователя'
-    }
-};
 
 /***/ }),
 /* 137 */
@@ -53466,7 +53331,7 @@ module.exports = __webpack_require__(143);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(47);
+var bind = __webpack_require__(48);
 var Axios = __webpack_require__(144);
 var defaults = __webpack_require__(29);
 
@@ -53501,9 +53366,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(51);
+axios.Cancel = __webpack_require__(52);
 axios.CancelToken = __webpack_require__(158);
-axios.isCancel = __webpack_require__(50);
+axios.isCancel = __webpack_require__(51);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -53635,7 +53500,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(49);
+var createError = __webpack_require__(50);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -54051,7 +53916,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(155);
-var isCancel = __webpack_require__(50);
+var isCancel = __webpack_require__(51);
 var defaults = __webpack_require__(29);
 
 /**
@@ -54202,7 +54067,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(51);
+var Cancel = __webpack_require__(52);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54328,6 +54193,10 @@ var _he2 = __webpack_require__(46);
 
 var _he3 = _interopRequireDefault(_he2);
 
+var _ru2 = __webpack_require__(47);
+
+var _ru3 = _interopRequireDefault(_ru2);
+
 var _validator = __webpack_require__(163);
 
 var _validator2 = _interopRequireDefault(_validator);
@@ -54352,19 +54221,9 @@ _veeValidate.Validator.extend('login', {
         he: function he() {
             return _he3.default.translation.userNotExistCredentials;
         },
-        ru: function (_ru) {
-            function ru() {
-                return _ru.apply(this, arguments);
-            }
-
-            ru.toString = function () {
-                return _ru.toString();
-            };
-
-            return ru;
-        }(function () {
-            return ru.translation.userNotExistCredentials;
-        })
+        ru: function ru() {
+            return _ru3.default.translation.userNotExistCredentials;
+        }
     },
     validate: function validate(value) {
         var _this = this;
@@ -54400,19 +54259,9 @@ _veeValidate.Validator.extend('unique', {
         he: function he() {
             return _he3.default.translation.emailAlreadyExists;
         },
-        ru: function (_ru2) {
-            function ru() {
-                return _ru2.apply(this, arguments);
-            }
-
-            ru.toString = function () {
-                return _ru2.toString();
-            };
-
-            return ru;
-        }(function () {
-            return ru.translation.emailAlreadyExists;
-        })
+        ru: function ru() {
+            return _ru3.default.translation.emailAlreadyExists;
+        }
     },
     validate: function validate(value) {
         var _this2 = this;
@@ -62011,7 +61860,7 @@ var render = function() {
                           "router-link",
                           {
                             attrs: {
-                              to: { name: "user" },
+                              to: { name: "user.set" },
                               tag: "li",
                               "active-class": "active"
                             }
@@ -62019,7 +61868,7 @@ var render = function() {
                           [
                             _c(
                               "router-link",
-                              { attrs: { to: { name: "user" } } },
+                              { attrs: { to: { name: "user.set" } } },
                               [
                                 _vm._v(
                                   "\n                            " +

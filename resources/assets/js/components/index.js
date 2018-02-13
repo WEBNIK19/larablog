@@ -4,6 +4,7 @@ import VeeValidate, { Validator } from 'vee-validate';
 
 import en from '../lang/en/en';
 import he from '../lang/he/he';
+import ru from '../lang/ru/ru';
 import validationEn from '../lang/en/validator';
 import validationHe from '../lang/he/validator';
 import validationRu from '../lang/he/validator';

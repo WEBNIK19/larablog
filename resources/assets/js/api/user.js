@@ -45,7 +45,12 @@ export default {
     },
     async deleteUser(params) {
         const json = await window.axios.delete('/api/user',params);
-        console.log(result.data);
+        console.log(json.data);
+        return json.data;
+    },
+    async getAllTypes(params) {
+        const json = await window.axios.get('api/type/all', { params });
+        //console.log(json.data);
         return json.data;
     },
 };

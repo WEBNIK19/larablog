@@ -74,8 +74,8 @@
                                 {{ $t("translation.userAll") }}
                             </router-link>
                         </router-link>
-                        <router-link :to="{ name: 'user' }" tag="li" active-class="active" v-if="logged">
-                            <router-link :to="{ name: 'user' }">
+                        <router-link :to="{ name: 'user.set' }" tag="li" active-class="active" v-if="logged">
+                            <router-link :to="{ name: 'user.set' }">
                                 {{ $t("translation.user") }}
                             </router-link>
                         </router-link>
