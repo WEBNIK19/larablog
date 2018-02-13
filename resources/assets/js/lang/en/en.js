@@ -27,9 +27,7 @@ export default {
         notFoundTitle: '404 Page not found',
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
-        userAll: 'All users',
-        user: 'User',
-        typeUserId: 'User type id',
-        UserId: 'User id'
+        userAll: 'Все пользователи',
+        userSet: ' Set user',
     },
 };

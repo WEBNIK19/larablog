@@ -12,11 +12,11 @@ class TypeUserController extends Controller
 {
     public function getAllTypes(){
 
-        $types_all = TypeUser::all();
         $data = [
             "status" => 1,
-            "data" =>  $types_all,          
+            "data" => TypeUser::all(),
         ];
+
         return response()->json($data);
 
     }

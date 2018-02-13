@@ -26,7 +26,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ $t(`translation.${currentLang}`) }} 
+                                {{ $t(`translation.${currentLang}`) }}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -76,7 +76,7 @@
                         </router-link>
                         <router-link :to="{ name: 'user.set' }" tag="li" active-class="active" v-if="logged">
                             <router-link :to="{ name: 'user.set' }">
-                                {{ $t("translation.user") }}
+                                {{ $t("translation.userSet") }}
                             </router-link>
                         </router-link>
                     </ul>

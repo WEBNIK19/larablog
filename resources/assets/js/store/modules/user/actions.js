@@ -92,7 +92,7 @@ export const getAllUsers = async ({ commit }) => {
 export const setUser = async ({ commit }, payload) => {
     const result = await user.setUser(payload.data);
     if (result.status === 1) {
-        commit(types.SET_USER, result.data);
+        commit(types.ALL_USERS, result.data);
         return result;
     }
     throw result;
@@ -107,6 +107,8 @@ export const getAllTypes = async ({ commit }) => {
     throw result;
 };
 
+
+
 export default {
     login,
     logout,
@@ -117,6 +119,6 @@ export default {
     checkLogged,
 
     getAllUsers,
-    getAllTypes,
     setUser,
+    getAllTypes,
 };

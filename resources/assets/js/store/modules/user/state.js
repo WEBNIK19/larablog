@@ -10,10 +10,5 @@ export default {
     updatedAt: '',
 
     allUsers: '',
-    allTypes: '',
-    typeUserId: '',
-    getUser: '',
-    setUser: '',
-    putUser: '',
-    deleteUser: '',
+    allTypes: [],
 };

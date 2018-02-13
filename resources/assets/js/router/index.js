@@ -10,7 +10,8 @@ import ResetPassword from '../components/auth/ResetPassword.vue';
 import NotFound from '../components/NotFound.vue';
 
 import AllUsers from '../components/users/AllUsers.vue';
-import setUser from '../components/users/setUser.vue';
+import SetUser from '../components/users/SetUser.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -70,12 +71,12 @@ const routes = [
     {
         path: '/user/set',
         name: 'user.set',
-        component: setUser,
+        component: SetUser,
         meta: {
             auth: true,
         },
     },
-    
+
     // Must be the last entry in array.
     {
         path: '*',

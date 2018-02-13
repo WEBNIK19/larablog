@@ -53,4 +53,13 @@ export default {
         //console.log(json.data);
         return json.data;
     },
+    async setUser(params) {
+        const json = await window.axios.post('/api/user', params);
+        return json.data;
+    },
+    async getAllTypes() {
+        const json = await window.axios.get('/api/type/all');
+        console.log(json.data);
+        return json.data;
+    },
 };
