@@ -94,13 +94,11 @@
                                 password_confirmation: this.userPasswordConfirmation,
                             }
                         });
-
                         this.$router.push({
                             name: 'user.all',
                         });
                     } catch (e) {
                         this.$validator.validate('email', 0);
-
                         this.progress = false;
                     }
                 }
