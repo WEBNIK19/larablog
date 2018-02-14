@@ -28,11 +28,11 @@ export default {
         const json = await window.axios.get('/api/user',params);
         return json.data;
     },
-    // async putUser(params) {
-    //     const json = await window.axios.put('/api/user',params);
-    //     console.log(result.data);
-    //     return json.data;
-    // },
+    async putUser(params) {
+        const json = await window.axios.put('/api/user',params);
+        console.log(json.data);
+        return json.data;
+    },
     async deleteUser(params) {
         const json = await window.axios.delete('/api/user',params);
         console.log(json.data);
@@ -42,9 +42,13 @@ export default {
         const json = await window.axios.post('/api/user', params);
         return json.data;
     },
+    async getUser(params) {
+        const json = await window.axios.get('/api/user', { params });
+        return json.data;
+    },
     async getAllTypes() {
         const json = await window.axios.get('/api/type/all');
-        console.log(json.data);
+        
         return json.data;
     },
 };

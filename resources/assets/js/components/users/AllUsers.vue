@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!--{{ allUsers }}-->
         <ul>
-            <li v-for="user in allUsers">{{ user.name}} {{user.id}}</li>
+            <li v-for="user in allUsers"><router-link :to="{ name: 'user.edit', params: {userId: user.id} }">{{ user.name}}</router-link></li>
         </ul>
     </div>
 </template>

@@ -9,4 +9,5 @@ export const CREATED_AT = 'CREATED_AT';
 export const UPDATED_AT = 'UPDATED_AT';
 
 export const ALL_USERS = 'ALL_USERS';
+export const USER = 'USER';
 export const ALL_TYPES = 'ALL_TYPES';

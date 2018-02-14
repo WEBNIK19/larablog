@@ -10,5 +10,6 @@ export default {
     updatedAt: '',
 
     allUsers: '',
-    allTypes: [],
+    User: '',
+    allTypes: '',
 };

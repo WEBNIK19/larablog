@@ -4,23 +4,23 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ $t("translation.register") }}</h3>
+                        <h3 class="panel-title">{{ User.name }}</h3>
                     </div>
                     <div class="panel-body">
                         <div v-if="progress" class="loading"></div>
                         <div class="col-md-12">
-                            <form class="form-horizontal" @submit.prevent="setUser">
+                            <form class="form-horizontal" @submit.prevent="putUser">
                                 <div :class="{ 'form-group': true, 'has-error': errors.has('name') }">
                                     <label for="name" class="control-label">{{ $t("translation.name") }}</label>
-                                    <input id="name" type="text" class="form-control" name="name" v-model="userName" v-validate="'required|max:255'" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name"  v-model="User.name" v-validate="'required|max:255'" autofocus>
                                     <span v-show="errors.has('name')" class="help-block">{{ errors.first('name') }}</span>
                                 </div>
                                 <div :class="{ 'form-group': true, 'has-error': errors.has('email') }">
                                     <label for="email" class="control-label">{{ $t("translation.email") }}</label>
-                                    <input id="email" type="email" class="form-control" name="email" v-model="userEmail" v-validate="'required|email|max:255'" @input="$validator.validate('email', 1)">
+                                    <input id="email" type="email" class="form-control" name="email"  v-model="User.email" v-validate="'required|email|max:255'" @input="$validator.validate('email', 1)">
                                     <span v-show="errors.has('email')" class="help-block">{{ errors.first('email') }}</span>
                                 </div>
-                                <div :class="{ 'form-group': true, 'has-error': errors.has('password') }">
+                                 <div :class="{ 'form-group': true, 'has-error': errors.has('password') }">
                                     <label for="password" class="control-label">{{ $t("translation.password") }}</label>
                                     <input id="password" type="password" class="form-control" name="password" v-model="userPassword" v-validate="'required|min:6'">
                                     <span v-show="errors.has('password')" class="help-block">{{ errors.first('password') }}</span>
@@ -71,21 +71,19 @@
             };
         },
        
-        computed: {
-            
-        },
         methods: {
-            async setUser() {
+            async putUser() {
                 this.$validator.validateAll();
 
                 if (!this.errors.any()) {
                     this.progress = true;
 
                     try {
-                        await this.$store.dispatch('setUser', {
+                        await this.$store.dispatch('putUser', {
                             data: {
                                 name: this.userName,
                                 email: this.userEmail,
+                                type_user_id: this.typeUser,
                                 password: this.userPassword,
                                 password_confirmation: this.userPasswordConfirmation,
                                 type_user_id: this.typeUser,
@@ -101,7 +99,15 @@
                 }
             },
         },
-        
+         mounted() {
+            this.$store.dispatch('getUser', {
+                data: {
+                    user_id: this.$route.params.userId,
+                }
+            });
+
+                
+        },
         created() {
             this.$validator.attach('email', 'unique');
         },

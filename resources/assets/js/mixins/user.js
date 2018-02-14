@@ -37,6 +37,23 @@ export default {
                 this.$store.commit(types.PASSWORD_CONFIRMATION, value);
             },
         },
+        AllTypes: {
+            get() {
+                this.$store.dispatch('getAllTypes');
+                return this.$store.getters.allTypes;
+            },
+            set(value) {
+                this.$store.commit(types.ALL_TYPES, value);
+            }
+        },
+        User: {
+            get() {
+                return this.$store.getters.User;
+            },
+            set(value) {
+                return this.$store.commit.User;
+            }
+        },
         typeUserId: {
             get() {
                 return this.$store.getters.typeUserId;

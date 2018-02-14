@@ -11,5 +11,6 @@ export default {
     updatedAt: state => state.updatedAt,
 
     allUsers: state => state.allUsers,
+    User: state => state.User,
     allTypes: state => state.allTypes,
 };

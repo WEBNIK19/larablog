@@ -18,7 +18,7 @@ Route::post("/login", "Api\UserController@login");
 Route::post("/register", "Api\UserController@register");
 Route::post("/password/email", "Api\UserController@sendResetLinkEmail");
 Route::post("/reset/password", "Api\UserController@resetEmail");
-Route::get("/type/all","Api\TypeUserController@getAllTypes");
+
 
 Route::group(['middleware'=>'auth:api'], function () {
 
@@ -32,7 +32,7 @@ Route::group(['middleware'=>'auth:api'], function () {
 			Route::put("/user","Api\UserController@putUser");
 			Route::delete("/user","Api\UserController@deleteUser");
 
-			
+			Route::get("/type/all","Api\TypeUserController@getAllTypes");
 			Route::get("/type","Api\TypeUserController@getType");
 			Route::post("/type","Api\TypeUserController@setType");
 			Route::put("/type","Api\TypeUserController@putType");

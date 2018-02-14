@@ -219,7 +219,7 @@ class UserController extends Controller
 			$user = User::find($id);
 			$data = [
 				'status' => 1,
-				'user'   => $user,
+				'data'   => $user,
 			];
 		}
 
@@ -248,7 +248,7 @@ class UserController extends Controller
 			'email' => 'required|string|email|unique:users,email',
 			'password' => 'required|confirmed',
 			'password_confirmation' => 'required',
-//			'type_user_id' => 'required|integer|min:1',
+			'type_user_id' => 'required',
 		]);
 
 		if($validator->fails()){
@@ -257,24 +257,24 @@ class UserController extends Controller
 				'errors' => $validator->errors(),
 			];
 		}else{
-//			$exist_type = TypeUser::find($request->input('type_user_id'));
-//			if(is_null($exist_type)){
-//				$data = [
-//					'status' => 0,
-//					'errors' => 'Type not exist!',
-//				];
-//			} else {
+			$exist_type = TypeUser::find($request->input('type_user_id'));
+			if(is_null($exist_type)){
+				$data = [
+					'status' => 0,
+					'errors' => 'Type not exist!',
+				];
+			} else {
 				$user = new User();
 				$user->name = $request->input('name');
 				$user->email = $request->input('email');
 				$user->password = bcrypt($request->input('password'));
 				$user->api_token = str_random(60);
-				$user->type_user_id = 1;
+				$user->type_user_id = $request->input('type_user_id');
 				$user->save();
 				$data = [
 					'status' => 1,
 				];
-//			}
+			}
 		}
 		
 		return response()->json($data);

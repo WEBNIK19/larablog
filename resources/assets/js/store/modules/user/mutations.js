@@ -39,6 +39,9 @@ export default {
     [types.ALL_USERS](state, payload) {
         state.allUsers = payload;
     },
+    [types.USER](state, payload) {
+        state.User = payload;
+    },
     [types.ALL_TYPES](state, payload) {
         state.allTypes = payload;
     },

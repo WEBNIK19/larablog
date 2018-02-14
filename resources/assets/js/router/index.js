@@ -11,6 +11,7 @@ import NotFound from '../components/NotFound.vue';
 
 import AllUsers from '../components/users/AllUsers.vue';
 import SetUser from '../components/users/SetUser.vue';
+import EditUser from '../components/users/EditUser.vue';
 
 Vue.use(VueRouter);
 
@@ -72,6 +73,14 @@ const routes = [
         path: '/user/set',
         name: 'user.set',
         component: SetUser,
+        meta: {
+            auth: true,
+        },
+    },
+    {
+        path: '/user/edit/:userId',
+        name: 'user.edit',
+        component: EditUser,
         meta: {
             auth: true,
         },

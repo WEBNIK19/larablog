@@ -92,7 +92,23 @@ export const getAllUsers = async ({ commit }) => {
 export const setUser = async ({ commit }, payload) => {
     const result = await user.setUser(payload.data);
     if (result.status === 1) {
-        commit(types.ALL_USERS, result.data);
+        return result;
+    }
+    throw result;
+};
+
+export const getUser = async ({ commit }, payload) => {
+    const result = await user.getUser(payload.data);
+    if (result.status === 1) {
+        commit(types.USER, result.data);
+        return result;
+    }
+    throw result;
+};
+
+export const putUser = async ({ commit }, payload) => {
+    const result = await user.putUser(payload.data);
+    if (result.status === 1) {
         return result;
     }
     throw result;
@@ -120,5 +136,6 @@ export default {
 
     getAllUsers,
     setUser,
+    getUser,
     getAllTypes,
 };
