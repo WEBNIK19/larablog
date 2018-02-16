@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Controller;
@@ -248,7 +247,7 @@ class UserController extends Controller
 			'email' => 'required|string|email|unique:users,email',
 			'password' => 'required|confirmed',
 			'password_confirmation' => 'required',
-			'type_user_id' => 'required',
+			'type_user_id' => 'required|exists:type_users,id',
 		]);
 
 		if($validator->fails()){
@@ -257,24 +256,16 @@ class UserController extends Controller
 				'errors' => $validator->errors(),
 			];
 		}else{
-			$exist_type = TypeUser::find($request->input('type_user_id'));
-			if(is_null($exist_type)){
-				$data = [
-					'status' => 0,
-					'errors' => 'Type not exist!',
-				];
-			} else {
-				$user = new User();
-				$user->name = $request->input('name');
-				$user->email = $request->input('email');
-				$user->password = bcrypt($request->input('password'));
-				$user->api_token = str_random(60);
-				$user->type_user_id = $request->input('type_user_id');
-				$user->save();
-				$data = [
-					'status' => 1,
-				];
-			}
+            $user = new User();
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                $user->password = bcrypt($request->input('password'));
+                $user->api_token = str_random(60);
+                $user->type_user_id = $request->input('type_user_id');
+                $user->save();
+                $data = [
+                    'status' => 1,
+                ];
 		}
 		
 		return response()->json($data);

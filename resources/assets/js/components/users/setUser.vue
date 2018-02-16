@@ -101,7 +101,9 @@
                 }
             },
         },
-        
+        mounted(){
+             this.$store.dispatch('getAllTypes');
+        },
         created() {
             this.$validator.attach('email', 'unique');
         },

@@ -137,5 +137,6 @@ export default {
     getAllUsers,
     setUser,
     getUser,
+    putUser,
     getAllTypes,
 };

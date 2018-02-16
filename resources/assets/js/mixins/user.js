@@ -39,7 +39,6 @@ export default {
         },
         AllTypes: {
             get() {
-                this.$store.dispatch('getAllTypes');
                 return this.$store.getters.allTypes;
             },
             set(value) {

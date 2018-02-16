@@ -18,6 +18,7 @@
                                 <div :class="{ 'form-group': true, 'has-error': errors.has('email') }">
                                     <label for="email" class="control-label">{{ $t("translation.email") }}</label>
                                     <input id="email" type="email" class="form-control" name="email"  v-model="User.email" v-validate="'required|email|max:255'" @input="$validator.validate('email', 1)">
+                                    <!--  -->
                                     <span v-show="errors.has('email')" class="help-block">{{ errors.first('email') }}</span>
                                 </div>
                                  <div :class="{ 'form-group': true, 'has-error': errors.has('password') }">
@@ -41,7 +42,10 @@
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="login-btn btn btn-success" :disabled="this.progress">
-                                        {{ $t("translation.register") }}
+                                        {{ $t("translation.save") }}
+                                    </button>
+                                    <button type="button" class="login-btn btn btn-danger" @click="showModal = true" :disabled="this.progress">
+                                        {{ $t("translation.delete") }}
                                     </button>
                                 </div>
                             </form>
@@ -50,12 +54,19 @@
                 </div>
             </div>
         </div>
+        <modal v-if="showModal" @close="showModal = false">
+    <!--
+      you can use custom content here to overwrite
+      default content
+    -->
+    <h3 slot="header">custom header</h3>
+  </modal>
     </div>
 </template>
 
 <script>
     import userMixin from '../../mixins/user';
-
+   
     export default {
         mixins: [
             userMixin,
@@ -68,6 +79,7 @@
                 userPassword: '',
                 userPasswordConfirmation: '',
                 typeUser: 1,
+                showModal: false,
             };
         },
        
@@ -81,8 +93,9 @@
                     try {
                         await this.$store.dispatch('putUser', {
                             data: {
-                                name: this.userName,
-                                email: this.userEmail,
+                                user_id: this.$route.params.userId,
+                                name: this.User.name,
+                                email: this.User.email,
                                 type_user_id: this.typeUser,
                                 password: this.userPassword,
                                 password_confirmation: this.userPasswordConfirmation,
@@ -100,13 +113,15 @@
             },
         },
          mounted() {
+            this.$store.dispatch('getAllTypes');
             this.$store.dispatch('getUser', {
                 data: {
                     user_id: this.$route.params.userId,
                 }
-            });
-
-                
+            });        
+        },
+        beforeCreate() {
+             this.$options.components.modal = require('../modal.vue').default;
         },
         created() {
             this.$validator.attach('email', 'unique');

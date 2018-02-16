@@ -615,7 +615,6 @@ exports.default = {
         },
         AllTypes: {
             get: function get() {
-                this.$store.dispatch('getAllTypes');
                 return this.$store.getters.allTypes;
             },
             set: function set(value) {
@@ -12480,6 +12479,8 @@ exports.default = {
         login: 'Login',
         logout: 'Logout',
         register: 'Register',
+        save: 'Save',
+        delete: 'Delete user',
         take: 'Apply',
         name: 'Name',
         email: 'Email',
@@ -12502,8 +12503,8 @@ exports.default = {
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
         userAll: 'Все пользователи',
-        userSet: ' Set user',
-        typeUser: 'TypeUser'
+        userSet: 'Set user',
+        typeUser: 'User`s type'
     }
 };
 
@@ -12566,6 +12567,8 @@ exports.default = {
         login: 'Войти',
         logout: 'Выйти',
         register: 'Зарегистрироваться',
+        save: 'Сохранить',
+        delete: 'Удалить пользователя',
         take: 'Запросить',
         name: 'Имя',
         email: 'Электронный адрес',
@@ -20083,7 +20086,9 @@ exports.default = {
             }))();
         }
     },
-
+    mounted: function mounted() {
+        this.$store.dispatch('getAllTypes');
+    },
     created: function created() {
         this.$validator.attach('email', 'unique');
     },
@@ -20665,7 +20670,8 @@ exports.default = {
             userEmail: '',
             userPassword: '',
             userPasswordConfirmation: '',
-            typeUser: 1
+            typeUser: 1,
+            showModal: false
         };
     },
 
@@ -20692,8 +20698,9 @@ exports.default = {
                                 _context.next = 6;
                                 return _this.$store.dispatch('putUser', {
                                     data: (0, _defineProperty3.default)({
-                                        name: _this.userName,
-                                        email: _this.userEmail,
+                                        user_id: _this.$route.params.userId,
+                                        name: _this.User.name,
+                                        email: _this.User.email,
                                         type_user_id: _this.typeUser,
                                         password: _this.userPassword,
                                         password_confirmation: _this.userPasswordConfirmation
@@ -20724,11 +20731,15 @@ exports.default = {
         }
     },
     mounted: function mounted() {
+        this.$store.dispatch('getAllTypes');
         this.$store.dispatch('getUser', {
             data: {
                 user_id: this.$route.params.userId
             }
         });
+    },
+    beforeCreate: function beforeCreate() {
+        this.$options.components.modal = __webpack_require__(190).default;
     },
     created: function created() {
         this.$validator.attach('email', 'unique');
@@ -20738,6 +20749,17 @@ exports.default = {
         this.passwordConfirmation = '';
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20827,420 +20849,467 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _c("h3", { staticClass: "panel-title" }, [
-              _vm._v(_vm._s(_vm.User.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _vm.progress ? _c("div", { staticClass: "loading" }) : _vm._e(),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _c("h3", { staticClass: "panel-title" }, [
+                _vm._v(_vm._s(_vm.User.name))
+              ])
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-12" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "form-horizontal",
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      _vm.putUser($event)
+            _c("div", { staticClass: "panel-body" }, [
+              _vm.progress ? _c("div", { staticClass: "loading" }) : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form-horizontal",
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        _vm.putUser($event)
+                      }
                     }
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "has-error": _vm.errors.has("name")
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label",
-                          attrs: { for: "name" }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("translation.name")))]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.User.name,
-                            expression: "User.name"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|max:255",
-                            expression: "'required|max:255'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "name",
-                          type: "text",
-                          name: "name",
-                          autofocus: ""
-                        },
-                        domProps: { value: _vm.User.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.User, "name", $event.target.value)
-                          }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        class: {
+                          "form-group": true,
+                          "has-error": _vm.errors.has("name")
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("name"),
-                              expression: "errors.has('name')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("name")))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "has-error": _vm.errors.has("email")
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label",
-                          attrs: { for: "email" }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("translation.email")))]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
+                      },
+                      [
+                        _c(
+                          "label",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.User.email,
-                            expression: "User.email"
+                            staticClass: "control-label",
+                            attrs: { for: "name" }
                           },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|email|max:255",
-                            expression: "'required|email|max:255'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "email", type: "email", name: "email" },
-                        domProps: { value: _vm.User.email },
-                        on: {
-                          input: [
-                            function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.User, "email", $event.target.value)
-                            },
-                            function($event) {
-                              _vm.$validator.validate("email", 1)
-                            }
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("email"),
-                              expression: "errors.has('email')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("email")))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "has-error": _vm.errors.has("password")
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label",
-                          attrs: { for: "password" }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("translation.password")))]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userPassword,
-                            expression: "userPassword"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|min:6",
-                            expression: "'required|min:6'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "password",
-                          type: "password",
-                          name: "password"
-                        },
-                        domProps: { value: _vm.userPassword },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.userPassword = $event.target.value
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("password"),
-                              expression: "errors.has('password')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("password")))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "has-error": _vm.errors.has("passwordConfirmation")
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label",
-                          attrs: { for: "password-confirmation" }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("translation.confirmPassword")))]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userPasswordConfirmation,
-                            expression: "userPasswordConfirmation"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|confirmed:password",
-                            expression: "'required|confirmed:password'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "password-confirmation",
-                          type: "password",
-                          name: "passwordConfirmation"
-                        },
-                        domProps: { value: _vm.userPasswordConfirmation },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.userPasswordConfirmation = $event.target.value
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("passwordConfirmation"),
-                              expression: "errors.has('passwordConfirmation')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm.errors.first("passwordConfirmation"))
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "has-error": _vm.errors.has("type_user")
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label",
-                          attrs: { for: "type_user" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(_vm.$t("translation.typeUser")) +
-                              "\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
+                          [_vm._v(_vm._s(_vm.$t("translation.name")))]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.typeUser,
-                              expression: "typeUser"
+                              value: _vm.User.name,
+                              expression: "User.name"
                             },
                             {
                               name: "validate",
                               rawName: "v-validate",
-                              value: "required",
-                              expression: "'required'"
+                              value: "required|max:255",
+                              expression: "'required|max:255'"
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { id: "type_user", name: "type_user" },
+                          attrs: {
+                            id: "name",
+                            type: "text",
+                            name: "name",
+                            autofocus: ""
+                          },
+                          domProps: { value: _vm.User.name },
                           on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.typeUser = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.User, "name", $event.target.value)
                             }
                           }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("name"),
+                                expression: "errors.has('name')"
+                              }
+                            ],
+                            staticClass: "help-block"
+                          },
+                          [_vm._v(_vm._s(_vm.errors.first("name")))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        class: {
+                          "form-group": true,
+                          "has-error": _vm.errors.has("email")
+                        }
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "control-label",
+                            attrs: { for: "email" }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("translation.email")))]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.User.email,
+                              expression: "User.email"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|email|max:255",
+                              expression: "'required|email|max:255'"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "email", type: "email", name: "email" },
+                          domProps: { value: _vm.User.email },
+                          on: {
+                            input: [
+                              function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.User, "email", $event.target.value)
+                              },
+                              function($event) {
+                                _vm.$validator.validate("email", 1)
+                              }
+                            ]
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("email"),
+                                expression: "errors.has('email')"
+                              }
+                            ],
+                            staticClass: "help-block"
+                          },
+                          [_vm._v(_vm._s(_vm.errors.first("email")))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        class: {
+                          "form-group": true,
+                          "has-error": _vm.errors.has("password")
+                        }
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "control-label",
+                            attrs: { for: "password" }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("translation.password")))]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userPassword,
+                              expression: "userPassword"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:6",
+                              expression: "'required|min:6'"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "password",
+                            type: "password",
+                            name: "password"
+                          },
+                          domProps: { value: _vm.userPassword },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userPassword = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("password"),
+                                expression: "errors.has('password')"
+                              }
+                            ],
+                            staticClass: "help-block"
+                          },
+                          [_vm._v(_vm._s(_vm.errors.first("password")))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        class: {
+                          "form-group": true,
+                          "has-error": _vm.errors.has("passwordConfirmation")
+                        }
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "control-label",
+                            attrs: { for: "password-confirmation" }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm.$t("translation.confirmPassword"))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userPasswordConfirmation,
+                              expression: "userPasswordConfirmation"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|confirmed:password",
+                              expression: "'required|confirmed:password'"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "password-confirmation",
+                            type: "password",
+                            name: "passwordConfirmation"
+                          },
+                          domProps: { value: _vm.userPasswordConfirmation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userPasswordConfirmation = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("passwordConfirmation"),
+                                expression: "errors.has('passwordConfirmation')"
+                              }
+                            ],
+                            staticClass: "help-block"
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm.errors.first("passwordConfirmation"))
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        class: {
+                          "form-group": true,
+                          "has-error": _vm.errors.has("type_user")
+                        }
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "control-label",
+                            attrs: { for: "type_user" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                      " +
+                                _vm._s(_vm.$t("translation.typeUser")) +
+                                "\n                                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.typeUser,
+                                expression: "typeUser"
+                              },
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required",
+                                expression: "'required'"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "type_user", name: "type_user" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.typeUser = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          _vm._l(_vm.AllTypes, function(type) {
+                            return _c(
+                              "option",
+                              { domProps: { value: type.id } },
+                              [_vm._v(_vm._s(type.type))]
+                            )
+                          })
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("type_user"),
+                                expression: "errors.has('type_user')"
+                              }
+                            ],
+                            staticClass: "help-block"
+                          },
+                          [_vm._v(_vm._s(_vm.errors.first("type_user")))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "login-btn btn btn-success",
+                          attrs: { type: "submit", disabled: this.progress }
                         },
-                        _vm._l(_vm.AllTypes, function(type) {
-                          return _c(
-                            "option",
-                            { domProps: { value: type.id } },
-                            [_vm._v(_vm._s(type.type))]
+                        [
+                          _vm._v(
+                            "\n                                      " +
+                              _vm._s(_vm.$t("translation.save")) +
+                              "\n                                  "
                           )
-                        })
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "span",
+                        "button",
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("type_user"),
-                              expression: "errors.has('type_user')"
+                          staticClass: "login-btn btn btn-danger",
+                          attrs: { type: "button", disabled: this.progress },
+                          on: {
+                            click: function($event) {
+                              _vm.showModal = true
                             }
-                          ],
-                          staticClass: "help-block"
+                          }
                         },
-                        [_vm._v(_vm._s(_vm.errors.first("type_user")))]
+                        [
+                          _vm._v(
+                            "\n                                      " +
+                              _vm._s(_vm.$t("translation.delete")) +
+                              "\n                                  "
+                          )
+                        ]
                       )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "login-btn btn btn-success",
-                        attrs: { type: "submit", disabled: this.progress }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.$t("translation.register")) +
-                            "\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              )
+                    ])
+                  ]
+                )
+              ])
             ])
           ])
         ])
-      ])
-    ])
-  ])
+      ]),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showModal = false
+                }
+              }
+            },
+            [
+              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v("custom header")
+              ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22785,6 +22854,7 @@ exports.default = {
     getAllUsers: getAllUsers,
     setUser: setUser,
     getUser: getUser,
+    putUser: putUser,
     getAllTypes: getAllTypes
 };
 
@@ -62718,6 +62788,553 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 174 */,
+/* 175 */,
+/* 176 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(188)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction) {
+  isProduction = _isProduction
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+/* 189 */,
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(191)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(193)
+/* template */
+var __vue_template__ = __webpack_require__(194)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72449f66", Component.options)
+  } else {
+    hotAPI.reload("data-v-72449f66", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(192);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(187)("4aac70e2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72449f66\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72449f66\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(176)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper {\n  display: table-cell;\n  vertical-align: middle;\n}\n.modal-container {\n  width: 300px;\n  margin: 0px auto;\n  padding: 20px 30px;\n  background-color: #fff;\n  border-radius: 2px;\n  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n          box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n  font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n  margin-top: 0;\n  color: #42b983;\n}\n.modal-body {\n  margin: 20px 0;\n}\n.modal-default-button {\n  float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n  opacity: 0;\n}\n.modal-leave-active {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "modal" } }, [
+    _c("div", { staticClass: "modal-mask" }, [
+      _c("div", { staticClass: "modal-wrapper" }, [
+        _c("div", { staticClass: "modal-container" }, [
+          _c(
+            "div",
+            { staticClass: "modal-header" },
+            [
+              _vm._t("header", [
+                _vm._v("\n            default header\n          ")
+              ])
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-body" },
+            [
+              _vm._t("body", [_vm._v("\n            default body\n          ")])
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-footer" },
+            [
+              _vm._t("footer", [
+                _vm._v("\n            default footer\n            "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "modal-default-button",
+                    on: {
+                      click: function($event) {
+                        _vm.$emit("close")
+                      }
+                    }
+                  },
+                  [_vm._v("\n              OK\n            ")]
+                )
+              ])
+            ],
+            2
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-72449f66", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

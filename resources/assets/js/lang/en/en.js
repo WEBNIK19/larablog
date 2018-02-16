@@ -6,6 +6,8 @@ export default {
         login: 'Login',
         logout: 'Logout',
         register: 'Register',
+        save: 'Save',
+        delete: 'Delete user',
         take: 'Apply',
         name: 'Name',
         email: 'Email',
@@ -28,7 +30,7 @@ export default {
         notFoundText: 'We couldn`t find the page you`re looking for.',
         profile: 'Profile',
         userAll: 'Все пользователи',
-        userSet: ' Set user',
-        typeUser: 'TypeUser'
+        userSet: 'Set user',
+        typeUser: 'User`s type',
     },
 };
