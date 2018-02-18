@@ -19,14 +19,14 @@ class PostController extends Controller
     	return response()->json($data);
     }
 
-    // public function getTodayPosts() {
-    // 	$data = [
-    // 		'status' => 1,
-    // 		'data' => Post::whereDate('created_at',date('Y-m-d'))->get(),
-    // 	];
+    public function getTodayPosts() {
+    	$data = [
+    		'status' => 1,
+    		'data' => Post::whereDate('created_at',date('Y-m-d'))->get(),
+    	];
 
-    // 	return response()->json($data);
-    // }
+    	return response()->json($data);
+    }
     
     public function getPost(Request $request) {
     	$validator = Validator::make($request->all(),[
@@ -39,7 +39,7 @@ class PostController extends Controller
     			'errors' => $validator->errors(),
     		];
     	} else {
-    		$id = $request->query('post_id');
+    		$id = $request->input('post_id');
     		$post = Post::find($id);
     		$data = [
     				'status' => 1,
@@ -47,7 +47,7 @@ class PostController extends Controller
     		];
     	}
 
-    	return request()->json($data);
+    	return response()->json($data);
     }
 
     public function setPost(Request $request) {
@@ -80,7 +80,7 @@ class PostController extends Controller
 
     public function putPost(Request $request){
     	$validator = Validator::make($request->all(),[
-    		'post_id' => 'required|exists:post,id',
+    		'post_id' => 'required|exists:posts,id',
     		'header' => 'string|min:1',
     			'post' => 'string|min:1',
     			'allow_comments' => 'boolean',
@@ -113,7 +113,7 @@ class PostController extends Controller
 
     public function deletePost(Request $request){
     	$validator = Validator::make($request->all(),[
-    		'post_id' => 'required|exists:post,id',
+    		'post_id' => 'required|exists:posts,id',
     	]);
 
     	if($validator->fails()){
@@ -128,6 +128,6 @@ class PostController extends Controller
     		];
     	}
 
-    	return request()->json($data);
+    	return response()->json($data);
     }
 }
