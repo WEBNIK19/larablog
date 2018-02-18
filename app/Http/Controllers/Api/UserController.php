@@ -301,6 +301,9 @@ class UserController extends Controller
 	{
 		$validator = Validator::make($request->all(),[
 			'user_id' => 'required|exists:users,id|integer|min:1',
+            'email' => 'string|email|unique:users,email',
+            'password' => 'confirmed',
+            'password_confirmation' => 'required_with:password',
 			'type_user_id' => 'exists:type_users,id',
 		]);
 
@@ -326,29 +329,12 @@ class UserController extends Controller
 			}
 
 			if(!empty($request->input('email'))){
-				$validator = Validator::make([
-					'email' => "unique:users",
-				]);
-				if($validator->fails()){
-					$data = [
-						'status' => 0,
-						'errors' => $validator->errors(),
-					];
-					return response()->json($data);
-				} else {
-					$user->email = $rquest->input('email');
-				}
+				
+                $user->email = $rquest->input('email');                
 			}
 
-			if(!empty($password)&&!empty($password)){
-				if($password == $password_confirmation){
-					$user->password = bcrypt($request->input('password'));
-				} else {
-					$data = [
-						'status' => 0,
-						'errors' => 'Passwords don`t match!',
-					];
-				}				
+			if(!empty($password)&&!empty($password_confirmation)){
+				$user->password = bcrypt($request->input('password'));			
 			}
 			
 			$user->save();
