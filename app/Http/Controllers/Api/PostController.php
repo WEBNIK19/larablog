@@ -19,14 +19,14 @@ class PostController extends Controller
     	return response()->json($data);
     }
 
-    public function getTodayPosts() {
-    	$data = [
-    		'status' => 1,
-    		'data' => Post::whereDate('created_at',date('Y-m-d'))->get(),
-    	];
+    // public function getTodayPosts() {
+    // 	$data = [
+    // 		'status' => 1,
+    // 		'data' => Post::whereDate('created_at',date('Y-m-d'))->get(),
+    // 	];
 
-    	return response()->json($data);
-    }
+    // 	return response()->json($data);
+    // }
     
     public function getPost(Request $request) {
     	$validator = Validator::make($request->all(),[
