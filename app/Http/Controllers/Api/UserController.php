@@ -301,7 +301,7 @@ class UserController extends Controller
 	{
 		$validator = Validator::make($request->all(),[
 			'user_id' => 'required|exists:users,id|integer|min:1',
-            'email' => 'string|email|unique:users,email',
+            'email' => 'string|email',
             'password' => 'confirmed',
             'password_confirmation' => 'required_with:password',
 			'type_user_id' => 'exists:type_users,id',

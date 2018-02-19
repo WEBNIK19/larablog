@@ -27,6 +27,27 @@ class PostController extends Controller
 
     	return response()->json($data);
     }
+
+    public function getUsersPosts(Request $request) {
+    	$validator = Validator::($request->all(),[
+    		'user_id' => 'required|exists:users,id',
+    	]);
+
+    	if($validator->fails()) {
+    		$data = [
+    			'status' => 0,
+    			'errors' => $validator->errors(),
+    		];
+    	} else {
+    		$posts = Post::where('user_id',$request->input('user_id'))->get();
+    		$data = [
+    			'status' => 1,
+    			'data' => $posts,
+    		];
+    	}
+
+    	return response()->json($data);
+    }
     
     public function getPost(Request $request) {
     	$validator = Validator::make($request->all(),[

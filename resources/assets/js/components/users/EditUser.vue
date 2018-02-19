@@ -124,7 +124,7 @@
              this.$options.components.modal = require('../modal.vue').default;
         },
         created() {
-            this.$validator.attach('email', 'unique');
+            //this.$validator.attach('email', 'unique');
         },
         beforeDestroy() {
             this.password = '';
