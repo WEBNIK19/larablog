@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import CxltToastr from 'cxlt-vue2-toastr';
+import swal from 'sweetalert2';
 import VeeValidate, { Validator } from 'vee-validate';
 
 import en from '../lang/en/en';
@@ -10,9 +11,15 @@ import validationHe from '../lang/he/validator';
 import validationRu from '../lang/he/validator';
 
 const toastrConfigs = {
-    position: 'bottom left',
+    position: 'top right',
     showDuration: 1000,
     timeOut: 7500,
+};
+
+const swalPlugin = {};
+
+swalPlugin.install = function(Vue) {
+    Vue.prototype.$swal = swal;
 };
 
 Validator.extend('login', {
@@ -56,7 +63,7 @@ Validator.extend('unique', {
 });
 
 Vue.use(CxltToastr, toastrConfigs);
-
+Vue.use(swalPlugin);
 Vue.use(VeeValidate, {
     fieldsBagName: 'fieldsValidation',
     locale: (localStorage.getItem('locale') === null) ? 'en' : localStorage.getItem('locale'),

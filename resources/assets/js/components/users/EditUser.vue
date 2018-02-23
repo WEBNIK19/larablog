@@ -44,7 +44,7 @@
                                     <button type="submit" class="login-btn btn btn-success" :disabled="this.progress">
                                         {{ $t("translation.save") }}
                                     </button>
-                                    <button type="button" class="login-btn btn btn-danger" @click="showModal = true" :disabled="this.progress">
+                                    <button type="button" class="login-btn btn btn-danger" @click='deleteUser' :disabled="this.progress">
                                         {{ $t("translation.delete") }}
                                     </button>
                                 </div>
@@ -54,13 +54,6 @@
                 </div>
             </div>
         </div>
-        <modal v-if="showModal" @close="showModal = false">
-    <!--
-      you can use custom content here to overwrite
-      default content
-    -->
-    <h3 slot="header">custom header</h3>
-  </modal>
     </div>
 </template>
 
@@ -111,6 +104,46 @@
                     }
                 }
             },
+
+            async deleteUser() {
+                    this.$swal({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                  if (!result.value) {
+                    try{
+                        this.$store.dispatch('deleteUser', {
+                                data: {
+                                    user_id: this.$route.params.userId,
+                                }                        
+                        });
+                    } catch(e){
+                        this.$swal(
+                        'Error!',
+                        'User hasn`t been deleted.',
+                        'error'
+                    )
+                  }
+
+                  this.$swal(
+                        'Success!',
+                        'User has been deleted.',
+                        'success'
+                    ).then(()=>{
+                        this.$router.push({
+                            name: 'user.all',
+                        });
+                    })                  
+                } 
+                })  
+                            
+                      
+                },
         },
          mounted() {
             this.$store.dispatch('getAllTypes');
@@ -120,9 +153,7 @@
                 }
             });        
         },
-        beforeCreate() {
-             this.$options.components.modal = require('../modal.vue').default;
-        },
+        
         created() {
             //this.$validator.attach('email', 'unique');
         },
