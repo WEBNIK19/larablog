@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Comment;
+use Validator;
+use Auth;
 
 class CommentController extends Controller
 {
@@ -17,9 +19,9 @@ class CommentController extends Controller
 
         return response()->json($data);
     }
-    public function getPostsComments() {
+    public function getPostsComments(Request $request) {
     	$validator = Validator::make($request->all(),[
-    		'post_id' => 'requred|exists:posts,id'
+    		'post_id' => 'required|exists:posts,id'
     	]);
     	if($validator->fails()) {
     		$data = [
@@ -37,7 +39,7 @@ class CommentController extends Controller
     	return response()->json($data);
     }
 
-    public function getUsersComments() {
+    public function getUsersComments(Request $request) {
     	$validator = Validator::make($request->all(),[
     		'user_id' => 'required|exists:users,id',
     	]);
@@ -96,7 +98,7 @@ class CommentController extends Controller
             if(!empty($request->input('comment'))) {
                $comment->comment = $request->input('comment');
             }
-             
+             $comment->save();
              $data = [
                 'status' => 1,
              ];
@@ -123,7 +125,7 @@ class CommentController extends Controller
             $comment->post_id = $request->input('post_id'); 
             $comment->comment = $request->input('comment'); 
             $comment->read = false;
-
+            $comment->save();
             $data = [
                 'status' => 1,
             ];  

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Comment;
 use App\Post;
 use Validator;
 use Auth;
@@ -29,7 +30,7 @@ class PostController extends Controller
     }
 
     public function getUsersPosts(Request $request) {
-    	$validator = Validator::($request->all(),[
+    	$validator = Validator::make($request->all(),[
     		'user_id' => 'required|exists:users,id',
     	]);
 
@@ -143,6 +144,7 @@ class PostController extends Controller
     			'errors' => $validator->errors(),
     		];
     	} else {
+            Comment::where('post_id',$request->input('post_id'))->delete();
     		Post::destroy($request->input('post_id'));
     		$data = [
     			'status' => 1,

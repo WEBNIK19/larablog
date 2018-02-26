@@ -32,7 +32,15 @@ Route::group(['middleware'=>'auth:api'], function () {
 			Route::post("/post","Api\PostController@setPost");
 			Route::put("/post","Api\PostController@putPost");
 			Route::delete("/post","Api\PostController@deletePost");
-			
+
+			Route::get("/comment/all", "Api\CommentController@getAllComments");
+			Route::get("/comment", "Api\CommentController@getComment");
+			Route::get("/comment/post", "Api\CommentController@getPostsComments");
+			Route::get("/comment/user", "Api\CommentController@getUsersComments");
+			Route::post("/comment", "Api\CommentController@setComment");
+			Route::put("/comment", "Api\CommentController@putComment");
+			Route::delete("/comment", "Api\CommentController@deleteComment");
+
 		Route::group(['middleware'=>'admin'], function(){
 			Route::post("/user","Api\UserController@setUser");
 			Route::put("/user","Api\UserController@putUser");
