@@ -1,7 +1,6 @@
 export default {
     async login(params) {
         const json = await window.axios.post('/api/login', params);
-       
         return json.data;
     },
     async register(params) {
@@ -35,7 +34,6 @@ export default {
     },
     async deleteUser(params) {
         const json = await window.axios.delete('/api/user',{ params });
-        console.log(json.data);
         return json.data;
     },
     async setUser(params) {
@@ -43,8 +41,7 @@ export default {
         return json.data;
     },
     async getAllTypes() {
-        const json = await window.axios.get('/api/type/all');
-        
+        const json = await window.axios.get('/api/type/all');        
         return json.data;
     },
 };

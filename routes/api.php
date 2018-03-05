@@ -26,8 +26,9 @@ Route::group(['middleware'=>'auth:api'], function () {
 			Route::get("/user/current","Api\UserController@getUserCurrent");
 			Route::get("/user","Api\UserController@getUser");
 			
-			Route::get("/post/all","Api\PostController@getAllPosts");
+			Route::get("/post/page","Api\PostController@getPagePosts");
 			Route::get("post/today","Api\PostController@getTodayPosts");
+			Route::get("post/user","Api\PostController@getUsersPosts");
 			Route::get("/post","Api\PostController@getPost");
 			Route::post("/post","Api\PostController@setPost");
 			Route::put("/post","Api\PostController@putPost");

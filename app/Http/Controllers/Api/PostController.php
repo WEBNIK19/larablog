@@ -11,11 +11,34 @@ use Auth;
 
 class PostController extends Controller
 {
-    public function getAllPosts() {
-    	$data = [
-    		'status' => 1,
-    		'data' => Post::latest()->get(),
-    	];
+    public function getPagePosts(Request $request) {
+        $validator = Validator::make($request->all(),[
+            'page' => 'required|integer|min:1',
+            'per_page' => 'required|integer|min:1',
+        ]);
+        if($validator->fails()){
+            $data = [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        } else {
+            $count = Post::count();
+            $page = (int)($request->input('page'));
+            $per_page = (int)($request->input('per_page'));
+
+            if($per_page*($page-1) + $per_page - 1 > $count){
+                $first = ($count - $per_page);
+            } else {
+                $first = $per_page*($page-1);
+            }
+            $posts = Post::offset($first)->limit($per_page)->get();
+            $data = [
+            'status' => 1,
+            'data' => $posts,
+        ];
+
+        }
+    	
 
     	return response()->json($data);
     }

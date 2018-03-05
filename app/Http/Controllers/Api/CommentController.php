@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Comment;
 use Validator;
@@ -21,7 +22,8 @@ class CommentController extends Controller
     }
     public function getPostsComments(Request $request) {
     	$validator = Validator::make($request->all(),[
-    		'post_id' => 'required|exists:posts,id'
+    		'post_id' => ['required',
+            Rule::exists('posts','id')->where('allow_comments',1)],
     	]);
     	if($validator->fails()) {
     		$data = [
@@ -111,7 +113,8 @@ class CommentController extends Controller
         $validator = Validator::make($request->all(),[
             'user_id' => 'required|exists:users,id',
             'comment' => 'required|string|min:1',
-            'post_id' => 'required|exists:posts,id',
+            'post_id' => ['required',
+            Rule::exists('posts','id')->where('allow_comments',1)],
         ]);
 
         if($validator->fails()) {

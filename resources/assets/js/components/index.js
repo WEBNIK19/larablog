@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import CxltToastr from 'cxlt-vue2-toastr';
 import swal from 'sweetalert2';
+import {Pagination} from 'vue-pagination-2';
 import VeeValidate, { Validator } from 'vee-validate';
 
 import en from '../lang/en/en';
@@ -63,6 +64,7 @@ Validator.extend('unique', {
 });
 
 Vue.use(CxltToastr, toastrConfigs);
+Vue.component('pagination', Pagination);
 Vue.use(swalPlugin);
 Vue.use(VeeValidate, {
     fieldsBagName: 'fieldsValidation',
