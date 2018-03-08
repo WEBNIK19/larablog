@@ -9,6 +9,5 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'header'=>$faker->sentence,
         'post'=>$faker->paragraph(10),
         'allow_comments'=>$faker->boolean,
-        'created_at'=>$faker->unixTime,
     ];
 });

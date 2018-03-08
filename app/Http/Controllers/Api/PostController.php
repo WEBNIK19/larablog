@@ -11,7 +11,7 @@ use Auth;
 
 class PostController extends Controller
 {
-    public function getPagePosts(Request $request) {
+    public function getAllPosts(Request $request) {
         $validator = Validator::make($request->all(),[
             'page' => 'required|integer|min:1',
             'per_page' => 'required|integer|min:1',
@@ -25,17 +25,19 @@ class PostController extends Controller
             $count = Post::count();
             $page = (int)($request->input('page'));
             $per_page = (int)($request->input('per_page'));
+            $totally = ceil($count/$per_page);
 
             if($per_page*($page-1) + $per_page - 1 > $count){
                 $first = ($count - $per_page);
             } else {
                 $first = $per_page*($page-1);
             }
-            $posts = Post::offset($first)->limit($per_page)->get();
+            $posts = Post::latest()->offset($first)->limit($per_page)->get();
             $data = [
-            'status' => 1,
-            'data' => $posts,
-        ];
+                'status' => 1,
+                'data' => ['totally'=> $totally, 
+                            'posts' => $posts],
+            ];
 
         }
     	
@@ -43,18 +45,44 @@ class PostController extends Controller
     	return response()->json($data);
     }
 
-    public function getTodayPosts() {
-    	$data = [
-    		'status' => 1,
-    		'data' => Post::whereDate('created_at',date('Y-m-d'))->get(),
-    	];
+    public function getTodayPosts(Request $request) {
+        $validator = Validator::make($request->all(),[
+            'page' => 'required|integer|min:1',
+            'per_page' => 'required|integer|min:1',
+        ]);
 
+        if($validator->fails()){
+            $data = [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        } else {
+            $count = Post::whereDate('created_at',date('Y-m-d'))->count();
+            $page = (int)($request->input('page'));
+            $per_page = (int)($request->input('per_page'));
+            $totally = ceil($count/$per_page);
+
+            if($per_page*($page-1) + $per_page - 1 > $count){
+                $first = ($count - $per_page);
+            } else {
+                $first = $per_page*($page-1);
+            }
+            $posts = Post::whereDate('created_at',date('Y-m-d'))->latest()->offset($first)->limit($per_page)->get();
+        	$data = [
+        		'status' => 1,
+        		'data' => ['totally'=> $totally, 
+                            'posts' => $posts],
+
+        	];
+        }
     	return response()->json($data);
     }
 
     public function getUsersPosts(Request $request) {
     	$validator = Validator::make($request->all(),[
     		'user_id' => 'required|exists:users,id',
+            'page' => 'required|integer|min:1',
+            'per_page' => 'required|integer|min:1',
     	]);
 
     	if($validator->fails()) {
@@ -63,10 +91,21 @@ class PostController extends Controller
     			'errors' => $validator->errors(),
     		];
     	} else {
-    		$posts = Post::where('user_id',$request->input('user_id'))->get();
+            $count = Post::where('user_id',$request->input('user_id'))->count();
+            $page = (int)($request->input('page'));
+            $per_page = (int)($request->input('per_page'));
+            $totally = ceil($count/$per_page);
+
+            if($per_page*($page-1) + $per_page - 1 > $count){
+                $first = ($count - $per_page);
+            } else {
+                $first = $per_page*($page-1);
+            }
+    		$posts = Post::where('user_id',$request->input('user_id'))->latest()->offset($first)->limit($per_page)->get();
     		$data = [
     			'status' => 1,
-    			'data' => $posts,
+    			'data' => ['totally'=> $totally, 
+                            'posts' => $posts],
     		];
     	}
 

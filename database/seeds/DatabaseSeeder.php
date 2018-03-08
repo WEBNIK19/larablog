@@ -25,7 +25,11 @@ class DatabaseSeeder extends Seeder
             //'online'=>0,
         ]);
         factory(App\User::class,10)->create()->each(function ($u){
-            factory(App\Post::class,3)->create(['user_id'=>$u->id]);
+            factory(App\Post::class,3)->create(['user_id'=>$u->id])->each(function ($p) {
+                if($p->allow_comments == 1){
+                    factory(App\Comment::class,3)->create(['post_id'=>$p->id]);
+                }
+            });
         });
         
     }
