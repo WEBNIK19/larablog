@@ -1,4 +1,4 @@
-imposrt * as types from '../../mutation-types';
+import * as types from '../../mutation-types';
 
 export default {
 	[types.PAGE_POSTS](state, payload) {

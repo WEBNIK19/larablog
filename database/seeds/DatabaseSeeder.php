@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             //'email_verify'=>1,
             //'email_token'=>"asdfhliu",
             'api_token'=>'admin1',
-            'password'=>bcrypt("admin"),
+            'password'=>bcrypt("admin1"),
             //'online'=>0,
         ]);
         factory(App\User::class,10)->create()->each(function ($u){

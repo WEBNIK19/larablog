@@ -19,8 +19,8 @@ export default {
         const json = await window.axios.get('/api/user/current');
         return json.data;
     },
-    async getAllUsers(params) {
-        const json = await window.axios.get('/api/user/all', { params });
+    async getAllUsers() {
+        const json = await window.axios.get('/api/user/all');
         return json.data;
     },
      async getUser(params) {
@@ -37,6 +37,7 @@ export default {
         return json.data;
     },
     async setUser(params) {
+
         const json = await window.axios.post('/api/user', params);
         return json.data;
     },

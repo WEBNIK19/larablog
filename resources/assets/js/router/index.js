@@ -13,6 +13,7 @@ import AllUsers from '../components/users/AllUsers.vue';
 import SetUser from '../components/users/SetUser.vue';
 import EditUser from '../components/users/EditUser.vue';
 
+import PagePosts from '../components/posts/PagePosts.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -81,6 +82,14 @@ const routes = [
         path: '/user/edit/:userId',
         name: 'user.edit',
         component: EditUser,
+        meta: {
+            auth: true,
+        },
+    },
+    {
+        path: '/posts/page/:page',
+        name: 'posts.page',
+        component: PagePosts,
         meta: {
             auth: true,
         },

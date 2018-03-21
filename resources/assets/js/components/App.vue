@@ -74,6 +74,11 @@
                                 {{ $t("translation.userAll") }}
                             </router-link>
                         </router-link>
+                        <router-link :to="{ name: 'posts.page', params: {page: 1}}" tag="li" active-class="active" >
+                            <router-link :to="{ name: 'posts.page', params: {page: 1} }">
+                                {{ $t("translation.postAll") }}
+                            </router-link>
+                        </router-link>
                         <router-link :to="{ name: 'user.set' }" tag="li" active-class="active" v-if="logged">
                             <router-link :to="{ name: 'user.set' }">
                                 {{ $t("translation.userSet") }}

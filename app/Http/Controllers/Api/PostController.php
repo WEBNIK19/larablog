@@ -32,7 +32,7 @@ class PostController extends Controller
             } else {
                 $first = $per_page*($page-1);
             }
-            $posts = Post::latest()->offset($first)->limit($per_page)->get();
+            $posts = Post::pgnt($first, $per_page);
             $data = [
                 'status' => 1,
                 'data' => ['totally'=> $totally, 
@@ -41,7 +41,6 @@ class PostController extends Controller
 
         }
     	
-
     	return response()->json($data);
     }
 
@@ -67,12 +66,13 @@ class PostController extends Controller
             } else {
                 $first = $per_page*($page-1);
             }
-            $posts = Post::whereDate('created_at',date('Y-m-d'))->latest()->offset($first)->limit($per_page)->get();
+            $posts = Post::whereDate('created_at',date('Y-m-d'))->pgnt($first, $per_page);
         	$data = [
         		'status' => 1,
-        		'data' => ['totally'=> $totally, 
-                            'posts' => $posts],
-
+        		'data' => [
+                            'totally'=> $totally, 
+                            'posts' => $posts
+                          ],
         	];
         }
     	return response()->json($data);
@@ -101,11 +101,13 @@ class PostController extends Controller
             } else {
                 $first = $per_page*($page-1);
             }
-    		$posts = Post::where('user_id',$request->input('user_id'))->latest()->offset($first)->limit($per_page)->get();
+    		$posts = Post::where('user_id',$request->input('user_id'))->pgnt($first, $per_page);
     		$data = [
     			'status' => 1,
-    			'data' => ['totally'=> $totally, 
-                            'posts' => $posts],
+    			'data' => [
+                            'totally'=> $totally, 
+                            'posts' => $posts
+                          ],
     		];
     	}
 

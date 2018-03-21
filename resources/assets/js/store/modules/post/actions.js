@@ -2,17 +2,19 @@ import post from '../../../api/post';
 
 import * as types from '../../mutation-types';
 
-export const getPagePosts = async ({ commit }, payload) => {
-	const json = await post.getAllPosts(payload);
-	commit(types.PAGE_POSTS, json.data);
-	if(json.status === 1){
-		return json;
+export const getAllPosts = async ({ commit }, payload) => {
+	const json = await post.getAllPosts(payload.data);
+	console.log(json.data);
+	if(json.data.status === 1){
+		commit(types.PAGE_POSTS, json.data.data.posts);
+		console.log(json.data.data.posts);
+		return json.data.data;
 	} else {
-		throw json;
+		throw json.data.data;
 	}
 };
 
-export const getTodayPosts = async ({ commit }) => {
+export const getTodayPosts = async ({ commit }, payload) => {
 const json = await post.getTodayPosts();
 	if(json.status === 1) {
 		commit(types.TODAY_POSTS, json.data);
@@ -67,5 +69,15 @@ export const deletePost = async (payload) => {
 	} else {
 		throw json;
 	}
+};
+
+export default{
+	getAllPosts,
+getTodayPosts,
+getUsersPosts,
+getPost,
+setPost,
+putPost,
+deletePost,
 };
 
