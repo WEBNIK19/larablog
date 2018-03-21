@@ -35,8 +35,10 @@ class PostController extends Controller
             $posts = Post::pgnt($first, $per_page);
             $data = [
                 'status' => 1,
-                'data' => ['totally'=> $totally, 
-                            'posts' => $posts],
+                'data' => [
+                    'totally'=> $totally,
+                    'posts' => $posts,
+                ],
             ];
 
         }

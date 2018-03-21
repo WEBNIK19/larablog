@@ -1,5 +1,5 @@
 export default {
-	PagePosts: '',
+    pagePosts: '',
 	TodayPosts: '',
 	UsersPosts: '',
 	Post: '',

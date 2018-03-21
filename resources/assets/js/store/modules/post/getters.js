@@ -1,6 +1,6 @@
 export default {
 
-PagePosts: state => state.PagePosts,
+pagePosts: state => state.pagePosts,
 TodayPosts: state => state.TodayPosts,
 UsersPosts: state => state.UsersPosts,
 Post: state => state.Post,

@@ -1,7 +1,7 @@
 export default {
-	async getAllPosts (params) {
-		const json = window.axios.get('/api/post/all',  { params } );
-		return json;
+	async getAllPosts(params) {
+		const json = await window.axios.get('/api/post/all', { params });
+		return json.data;
 	},
 
 	async getTodayPosts (params) {

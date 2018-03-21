@@ -12,21 +12,19 @@
 </template>
 <script>
 	export default{
-		computed:{
+		computed: {
 			PagePosts(){
-				return this.$store.getters.PagePosts;
-			}
+				return this.$store.getters.pagePosts;
+			},
 		},
 		mounted(){
 			
-			this.$store.dispatch('getAllPosts',{
-				data:
-				{
+			this.$store.dispatch('getAllPosts', {
+				data: {
 					page: this.$route.params.page, 
 					per_page: "5",
 				}
-			}
-				);
+			});
 			
 		}
 	};
