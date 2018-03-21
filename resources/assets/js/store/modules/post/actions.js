@@ -15,7 +15,7 @@ export const getAllPosts = async ({ commit }, payload) => {
 };
 
 export const getTodayPosts = async ({ commit }, payload) => {
-const json = await post.getTodayPosts();
+const json = await post.getTodayPosts(payload.data);
 	if(json.status === 1) {
 		commit(types.TODAY_POSTS, json.data);
 		return json;
@@ -25,7 +25,7 @@ const json = await post.getTodayPosts();
 };
 
 export const getUsersPosts = async ({ commit }, payload) => {
-const json = await post.getUsersPosts(payload);
+const json = await post.getUsersPosts(payload.data);
 	if(json.stats === 1) {
 		commit(types.USERS_POSTS, json.data);
 		return json;
