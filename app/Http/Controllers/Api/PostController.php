@@ -33,6 +33,7 @@ class PostController extends Controller
                 $first = $per_page*($page-1);
             }
             $posts = Post::pgnt($first, $per_page);
+            
             $data = [
                 'status' => 1,
                 'data' => ['totally'=> $totally, 
@@ -43,7 +44,7 @@ class PostController extends Controller
     	
     	return response()->json($data);
     }
-
+    
     public function getTodayPosts(Request $request) {
         $validator = Validator::make($request->all(),[
             'page' => 'required|integer|min:1',
@@ -141,6 +142,7 @@ class PostController extends Controller
     			'user_id' => 'required|exists:users,id',
     			'header' => 'required|string|min:1',
     			'post' => 'required|string|min:1',
+                'demo' => 'required|string|min:1',
     			'allow_comments' => 'required|boolean',
     	]);
 
@@ -154,6 +156,7 @@ class PostController extends Controller
     		$post->user_id = $request->input('user_id');
     		$post->header = $request->input('header');
     		$post->post = $request->input('post');
+            $post->demo = $request->input('demo');
     		$post->allow_comments = $request->input('allow_comments');
     		$post->save();
     		$data = [
@@ -168,8 +171,9 @@ class PostController extends Controller
     	$validator = Validator::make($request->all(),[
     		'post_id' => 'required|exists:posts,id',
     		'header' => 'string|min:1',
-    			'post' => 'string|min:1',
-    			'allow_comments' => 'boolean',
+            'demo' => 'string|min:1',
+    		'post' => 'string|min:1',
+    		'allow_comments' => 'boolean',
     	]);
 
     	if($validator->fails()) {
@@ -183,6 +187,10 @@ class PostController extends Controller
     		if(!empty($request->input('header'))) {
     			$post->header = $request->input('header');
     		}
+
+            if(!empty($request->input('demo'))) {
+                $post->demo = $request->input('demo');
+            }
 
     		if(!empty($request->input('post'))) {
     			$post->post = $request->input('post');
@@ -216,5 +224,40 @@ class PostController extends Controller
     	}
 
     	return response()->json($data);
+    }
+
+    public function searchPost(Request $request){
+        $validator = Validator::make($request->all(),[
+            'page' => 'required|integer|min:1',
+            'per_page' => 'required|integer|min:1',
+            'word' => 'string|min:1',
+        ]);
+
+        if($validator->fails()){
+            $data = [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        } else {
+            $search_str = str_replace(" ","%",$request->input('word'));
+
+            $count = Post::where('user_id',$request->input('user_id'))->count();
+            $page = (int)($request->input('page'));
+            $per_page = (int)($request->input('per_page'));
+            $totally = ceil($count/$per_page);
+
+            if($per_page*($page-1) + $per_page - 1 > $count){
+                $first = ($count - $per_page);
+            } else {
+                $first = $per_page*($page-1);
+            }
+
+            $results = Post::search($search_str)->pgnt($first,$per_page);
+            $data = [
+                'status' => 1,
+                'data' => $results,
+            ];
+        }
+        return response()->json($data);
     }
 }

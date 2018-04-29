@@ -32,6 +32,10 @@ export default {
         userAll: 'Все пользователи',
         userSet: 'Set user',
         typeUser: 'User`s type',
-        postAll: 'All posts',
+        posts: 'posts',
+        postsAll: 'All posts',
+        postsUser: 'Posts of ',
+        postsToday: 'Today posts',
+
     },
 };

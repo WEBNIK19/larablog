@@ -4,12 +4,14 @@
  *=============
  */
 
-import actions from './actions.js';
-import mutations from './mutations.js';
-import state from './state.js';
+import actions from './actions';
+import getters from './getters';
+import mutations from './mutations';
+import state from './state';
 
 export default {
 	actions,
+	getters,
 	mutations,
 	state,
 }

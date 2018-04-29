@@ -33,6 +33,7 @@ Route::group(['middleware'=>'auth:api'], function () {
 			Route::post("/post","Api\PostController@setPost");
 			Route::put("/post","Api\PostController@putPost");
 			Route::delete("/post","Api\PostController@deletePost");
+			Route::get("/post/search","Api\PostController@searchPost");
 
 			Route::get("/comment/all", "Api\CommentController@getAllComments");
 			Route::get("/comment", "Api\CommentController@getComment");

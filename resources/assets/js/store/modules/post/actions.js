@@ -4,20 +4,19 @@ import * as types from '../../mutation-types';
 
 export const getAllPosts = async ({ commit }, payload) => {
 	const json = await post.getAllPosts(payload.data);
-	console.log(json.data);
-	if(json.data.status === 1){
-		commit(types.PAGE_POSTS, json.data.data.posts);
-		console.log(json.data.data.posts);
-		return json.data.data;
+	if(json.status === 1){
+		commit(types.PAGE_POSTS, json.data.posts);
+		return json.data;
 	} else {
-		throw json.data.data;
+		throw json.data;
 	}
 };
 
 export const getTodayPosts = async ({ commit }, payload) => {
 const json = await post.getTodayPosts(payload.data);
+console.log(json);
 	if(json.status === 1) {
-		commit(types.TODAY_POSTS, json.data);
+		commit(types.PAGE_POSTS, json.data.posts);
 		return json;
 	} else {
 		throw json;
@@ -27,7 +26,7 @@ const json = await post.getTodayPosts(payload.data);
 export const getUsersPosts = async ({ commit }, payload) => {
 const json = await post.getUsersPosts(payload.data);
 	if(json.stats === 1) {
-		commit(types.USERS_POSTS, json.data);
+		commit(types.PAGE_POSTS, json.data.posts);
 		return json;
 	} else {
 		throw json;
@@ -64,6 +63,15 @@ export const putPost = async (payload) => {
 
 export const deletePost = async (payload) => {
 	const json = await post.deletePost(payload);
+	if(json.status === 1) {
+		return json;
+	} else {
+		throw json;
+	}
+};
+
+export const searchPost = async ({ commit }, payload) => {
+	const json = await post.searchPost(payload);
 	if(json.status === 1) {
 		return json;
 	} else {

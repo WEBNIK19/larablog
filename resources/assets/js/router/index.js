@@ -13,7 +13,8 @@ import AllUsers from '../components/users/AllUsers.vue';
 import SetUser from '../components/users/SetUser.vue';
 import EditUser from '../components/users/EditUser.vue';
 
-import PagePosts from '../components/posts/PagePosts.vue';
+import AllPosts from '../components/posts/AllPosts.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -87,14 +88,14 @@ const routes = [
         },
     },
     {
-        path: '/posts/page/:page',
-        name: 'posts.page',
-        component: PagePosts,
+        path: '/posts/:action/:page',
+        name: 'posts.all',
+        component: AllPosts,
         meta: {
-            auth: true,
+            
         },
     },
-
+    
     // Must be the last entry in array.
     {
         path: '*',
