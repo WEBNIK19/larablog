@@ -36,8 +36,10 @@ class PostController extends Controller
             
             $data = [
                 'status' => 1,
-                'data' => ['totally'=> $totally, 
-                            'posts' => $posts],
+                'data' => [
+                    'totally'=> $totally,
+                    'posts' => $posts,
+                ],
             ];
 
         }

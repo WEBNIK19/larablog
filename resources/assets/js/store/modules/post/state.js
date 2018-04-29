@@ -1,4 +1,4 @@
 export default {
-	PagePosts: '',
+  pagePosts: '',	
 	Post: '',
 }

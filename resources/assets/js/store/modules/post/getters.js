@@ -1,5 +1,4 @@
 export default {
-
-PagePosts: state => state.PagePosts,
+pagePosts: state => state.pagePosts,
 Post: state => state.Post,
 };
