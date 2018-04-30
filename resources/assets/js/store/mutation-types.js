@@ -12,6 +12,4 @@ export const ALL_USERS = 'ALL_USERS';
 export const USER = 'USER';
 export const ALL_TYPES = 'ALL_TYPES';
 export const PAGE_POSTS = 'PAGE_POSTS';
-export const TODAY_POSTS = 'TODAY_POSTS';
-export const USERS_POSTS = 'USERS_POSTS';
 export const POST = 'POST';

@@ -1,7 +1,7 @@
 
-/*=============
+/*
  * Post Module
- *=============
+ *
  */
 
 import actions from './actions';
@@ -10,8 +10,8 @@ import mutations from './mutations';
 import state from './state';
 
 export default {
-	actions,
-	getters,
-	mutations,
-	state,
-}
+    actions,
+    getters,
+    mutations,
+    state,
+};

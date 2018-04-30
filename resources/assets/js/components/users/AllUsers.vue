@@ -11,7 +11,7 @@
     export default {
         computed: {
             allUsers() {
-              return this.$store.getters.allUsers;
+                return this.$store.getters.allUsers;
             },
         },
         mounted() {

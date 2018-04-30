@@ -36,6 +36,6 @@ export default {
         posts: 'Посты',
         postsAll: 'Все посты',
         postsUser: 'Посты ',
-        postsUser: 'Сегодняшние посты',
+        postsToday: 'Сегодняшние посты',
     },
 };

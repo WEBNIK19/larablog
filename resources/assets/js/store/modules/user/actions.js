@@ -115,10 +115,10 @@ export const putUser = async ({ commit }, payload) => {
     throw result;
 };
 
-export const deleteUser = async ({dispatch, commit }, payload) =>{
+export const deleteUser = async ({ dispatch, commit }, payload) => {
     const result = await user.deleteUser(payload.data);
     if (result.status === 1) {
-      await dispatch('getAllUsers');
+        await dispatch('getAllUsers');
         return result;
     }
     throw result;
@@ -131,8 +131,6 @@ export const getAllTypes = async ({ commit }) => {
     }
     throw result;
 };
-
-
 
 export default {
     login,

@@ -70,9 +70,7 @@
                 typeUser: 1,
             };
         },
-       
         computed: {
-            
         },
         methods: {
             async setUser() {
@@ -89,7 +87,7 @@
                                 password: this.userPassword,
                                 password_confirmation: this.userPasswordConfirmation,
                                 type_user_id: this.typeUser,
-                            }
+                            },
                         });
                         this.$router.push({
                             name: 'user.all',
@@ -101,8 +99,8 @@
                 }
             },
         },
-        mounted(){
-             this.$store.dispatch('getAllTypes');
+        mounted() {
+            this.$store.dispatch('getAllTypes');
         },
         created() {
             this.$validator.attach('email', 'unique');

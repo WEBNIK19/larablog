@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import CxltToastr from 'cxlt-vue2-toastr';
 import swal from 'sweetalert2';
-import {Pagination} from 'vue-pagination-2';
+import { Pagination } from 'vue-pagination-2';
 import VeeValidate, { Validator } from 'vee-validate';
 
 import en from '../lang/en/en';
@@ -9,7 +9,7 @@ import he from '../lang/he/he';
 import ru from '../lang/ru/ru';
 import validationEn from '../lang/en/validator';
 import validationHe from '../lang/he/validator';
-import validationRu from '../lang/he/validator';
+import validationRu from '../lang/ru/validator';
 
 const toastrConfigs = {
     position: 'top right',
@@ -18,8 +18,8 @@ const toastrConfigs = {
 };
 
 const swalPlugin = {};
-
-swalPlugin.install = function(Vue) {
+// eslint-disable-next-line
+swalPlugin.install = function (Vue) {
     Vue.prototype.$swal = swal;
 };
 

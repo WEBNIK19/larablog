@@ -92,10 +92,8 @@ const routes = [
         name: 'posts.all',
         component: AllPosts,
         meta: {
-            
         },
     },
-    
     // Must be the last entry in array.
     {
         path: '*',

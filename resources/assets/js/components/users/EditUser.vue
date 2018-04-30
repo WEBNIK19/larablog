@@ -59,7 +59,7 @@
 
 <script>
     import userMixin from '../../mixins/user';
-   
+
     export default {
         mixins: [
             userMixin,
@@ -75,7 +75,7 @@
                 showModal: false,
             };
         },
-       
+
         methods: {
             async putUser() {
                 this.$validator.validateAll();
@@ -92,8 +92,7 @@
                                 type_user_id: this.typeUser,
                                 password: this.userPassword,
                                 password_confirmation: this.userPasswordConfirmation,
-                                type_user_id: this.typeUser,
-                            }
+                            },
                         });
                         this.$router.push({
                             name: 'user.all',
@@ -106,56 +105,54 @@
             },
 
             async deleteUser() {
-                    this.$swal({
-                  title: 'Are you sure?',
-                  text: "You won't be able to revert this!",
-                  type: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Yes, delete it!'
+                this.$swal({
+                    title: 'Are you sure?',
+                    text: 'You won`t be able to revert this!',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
                 }).then((result) => {
-                  if (!result.value) {
-                    try{
-                        this.$store.dispatch('deleteUser', {
+                    if (!result.value) {
+                        try {
+                            this.$store.dispatch('deleteUser', {
                                 data: {
                                     user_id: this.$route.params.userId,
-                                }                        
-                        });
-                    } catch(e){
-                        this.$swal(
-                        'Error!',
-                        'User hasn`t been deleted.',
-                        'error'
-                    )
-                  }
+                                },
+                            });
+                        } catch (e) {
+                            this.$swal(
+                                'Error!',
+                                'User hasn`t been deleted.',
+                                'error',
+                    );
+                        }
 
-                  this.$swal(
-                        'Success!',
-                        'User has been deleted.',
-                        'success'
-                    ).then(()=>{
-                        this.$router.push({
-                            name: 'user.all',
+                        this.$swal(
+                            'Success!',
+                            'User has been deleted.',
+                            'success',
+                        ).then(() => {
+                            this.$router.push({
+                                name: 'user.all',
+                            });
                         });
-                    })                  
-                } 
-                })  
-                            
-                      
-                },
+                    }
+                });
+            },
         },
-         mounted() {
+        mounted() {
             this.$store.dispatch('getAllTypes');
             this.$store.dispatch('getUser', {
                 data: {
                     user_id: this.$route.params.userId,
-                }
-            });        
+                },
+            });
         },
-        
+
         created() {
-            //this.$validator.attach('email', 'unique');
+            // this.$validator.attach('email', 'unique');
         },
         beforeDestroy() {
             this.password = '';

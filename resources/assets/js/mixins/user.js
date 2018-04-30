@@ -43,15 +43,15 @@ export default {
             },
             set(value) {
                 this.$store.commit(types.ALL_TYPES, value);
-            }
+            },
         },
         User: {
             get() {
                 return this.$store.getters.User;
             },
             set(value) {
-                return this.$store.commit.User;
-            }
+                return this.$store.commit(types.USER, value);
+            },
         },
         typeUserId: {
             get() {
@@ -59,8 +59,7 @@ export default {
             },
             set(value) {
                 this.$store.commit(types.TYPE_USER_ID, value);
-            }
+            },
         },
-        
     },
 };
