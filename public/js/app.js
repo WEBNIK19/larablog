@@ -13430,6 +13430,11 @@ var routes = [{
         auth: true
     }
 }, {
+    path: '/posts/:action/:page/:word',
+    name: 'posts.all',
+    component: _AllPosts2.default,
+    meta: {}
+}, {
     path: '/posts/:action/:page',
     name: 'posts.all',
     component: _AllPosts2.default,
@@ -21396,14 +21401,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 exports.default = {
     watch: {
         // eslint-disable-next-line
         '$route': function $route(to, from) {
             if (this.$route.params.action === 'all') {
-                console.log('all');
                 this.$store.dispatch('getAllPosts', {
                     data: {
                         page: this.$route.params.page,
@@ -21411,7 +21414,6 @@ exports.default = {
                     }
                 });
             } else if (this.$route.params.action === 'today') {
-                console.log('today');
                 this.$store.dispatch('getTodayPosts', {
                     data: {
                         page: this.$route.params.page,
@@ -21419,7 +21421,6 @@ exports.default = {
                     }
                 });
             } else if (this.$route.params.action === 'user') {
-                console.log('user');
                 this.$store.dispatch('getUsersPosts', {
                     data: {
                         page: this.$route.params.page,
@@ -21436,7 +21437,6 @@ exports.default = {
     },
     mounted: function mounted() {
         if (this.$route.params.action === 'all') {
-            console.log(this.$route.params.action);
             this.$store.dispatch('getAllPosts', {
                 data: {
                     page: this.$route.params.page,
@@ -21444,7 +21444,6 @@ exports.default = {
                 }
             });
         } else if (this.$route.params.action === 'today') {
-            console.log(this.$route.params.action);
             this.$store.dispatch('getTodayPosts', {
                 data: {
                     page: this.$route.params.page,
@@ -21452,11 +21451,18 @@ exports.default = {
                 }
             });
         } else if (this.$route.params.action === 'user') {
-            console.log(this.$route.params.action);
             this.$store.dispatch('getUsersPosts', {
                 data: {
                     page: this.$route.params.page,
                     per_page: '5'
+                }
+            });
+        } else if (this.$route.params.action === 'search') {
+            this.$store.dispatch('searchPost', {
+                data: {
+                    page: this.$route.params.page,
+                    per_page: '5',
+                    word: this.$route.params.word
                 }
             });
         }
@@ -23888,22 +23894,24 @@ var searchPost = exports.searchPost = function () {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return _post2.default.searchPost(payload);
+                        return _post2.default.searchPost(payload.data);
 
                     case 2:
                         json = _context8.sent;
 
                         if (!(json.status === 1)) {
-                            _context8.next = 5;
+                            _context8.next = 7;
                             break;
                         }
 
+                        console.log(json.data);
+                        commit(types.PAGE_POSTS, json.data.posts);
                         return _context8.abrupt('return', json);
 
-                    case 5:
+                    case 7:
                         throw json;
 
-                    case 6:
+                    case 8:
                     case 'end':
                         return _context8.stop();
                 }
@@ -23923,7 +23931,8 @@ exports.default = {
     getPost: getPost,
     setPost: setPost,
     putPost: putPost,
-    deletePost: deletePost
+    deletePost: deletePost,
+    searchPost: searchPost
 };
 
 /***/ }),
@@ -23962,11 +23971,9 @@ exports.default = {
 
                         case 2:
                             json = _context.sent;
-
-                            console.log(json.data);
                             return _context.abrupt('return', json.data);
 
-                        case 5:
+                        case 4:
                         case 'end':
                             return _context.stop();
                     }

@@ -88,6 +88,13 @@ const routes = [
         },
     },
     {
+        path: '/posts/:action/:page/:word',
+        name: 'posts.all',
+        component: AllPosts,
+        meta: {
+        },
+    },
+    {
         path: '/posts/:action/:page',
         name: 'posts.all',
         component: AllPosts,

@@ -66,8 +66,10 @@ export const deletePost = async (payload) => {
 };
 
 export const searchPost = async ({ commit }, payload) => {
-    const json = await post.searchPost(payload);
+    const json = await post.searchPost(payload.data);
     if (json.status === 1) {
+        console.log(json.data);
+        commit(types.PAGE_POSTS, json.data.posts);
         return json;
     }
     throw json;
@@ -81,5 +83,6 @@ export default{
     setPost,
     putPost,
     deletePost,
+    searchPost,
 };
 

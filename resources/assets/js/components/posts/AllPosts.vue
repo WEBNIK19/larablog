@@ -8,7 +8,6 @@
       </div>  
     </div>
   </div>
-
 </template>
 <script>
   export default{
@@ -16,7 +15,6 @@
         // eslint-disable-next-line
           '$route'(to, from) {
               if (this.$route.params.action === 'all') {
-                  console.log('all');
                   this.$store.dispatch('getAllPosts', {
                       data:
                       {
@@ -26,7 +24,6 @@
                   },
                   );
               } else if (this.$route.params.action === 'today') {
-                  console.log('today');
                   this.$store.dispatch('getTodayPosts', {
                       data:
                       {
@@ -36,7 +33,6 @@
                   },
                   );
               } else if (this.$route.params.action === 'user') {
-                  console.log('user');
                   this.$store.dispatch('getUsersPosts', {
                       data:
                       {
@@ -55,7 +51,6 @@
       },
       mounted() {
           if (this.$route.params.action === 'all') {
-              console.log(this.$route.params.action);
               this.$store.dispatch('getAllPosts', {
                   data:
                   {
@@ -65,7 +60,6 @@
               },
               );
           } else if (this.$route.params.action === 'today') {
-              console.log(this.$route.params.action);
               this.$store.dispatch('getTodayPosts', {
                   data:
                   {
@@ -75,12 +69,21 @@
               },
               );
           } else if (this.$route.params.action === 'user') {
-              console.log(this.$route.params.action);
               this.$store.dispatch('getUsersPosts', {
                   data:
                   {
                       page: this.$route.params.page,
                       per_page: '5',
+                  },
+              },
+          );
+          } else if (this.$route.params.action === 'search') {
+              this.$store.dispatch('searchPost', {
+                  data:
+                  {
+                      page: this.$route.params.page,
+                      per_page: '5',
+                      word: this.$route.params.word,
                   },
               },
           );

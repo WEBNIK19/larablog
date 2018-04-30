@@ -232,7 +232,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(),[
             'page' => 'required|integer|min:1',
             'per_page' => 'required|integer|min:1',
-            'word' => 'string|min:1',
+            'word' => 'required|string|min:1',
         ]);
 
         if($validator->fails()){
@@ -243,7 +243,7 @@ class PostController extends Controller
         } else {
             $search_str = str_replace(" ","%",$request->input('word'));
 
-            $count = Post::where('user_id',$request->input('user_id'))->count();
+            $count = Post::search($search_str)->count();
             $page = (int)($request->input('page'));
             $per_page = (int)($request->input('per_page'));
             $totally = ceil($count/$per_page);
@@ -257,7 +257,10 @@ class PostController extends Controller
             $results = Post::search($search_str)->pgnt($first,$per_page);
             $data = [
                 'status' => 1,
-                'data' => $results,
+                'data' => [
+                            'totally'=> $totally, 
+                            'posts' => $results,
+                          ],
             ];
         }
         return response()->json($data);
