@@ -77,17 +77,17 @@
                                 </a> 
                             <ul class="dropdown-menu">
                                <router-link :to="{ name: 'posts.all', params: {action:'user', page: 1}}" tag="li" active-class="active" >
-                                    <router-link :to="{ name: 'posts.all', params: {action:'user', page: 1} }">
+                                    <router-link :to="{ name: 'posts.all', params: {action:'user', page: 1}}">
                                         {{ $t("translation.postsUser") + name }}
                                     </router-link>
                                 </router-link>
                                 <router-link :to="{ name: 'posts.all', params: {action:'today', page: 1}}" tag="li" active-class="active" >
-                                    <router-link :to="{ name: 'posts.all', params: {action:'today', page: 1} }">
+                                    <router-link :to="{ name: 'posts.all', params: {action:'today', page: 1}}">
                                         {{ $t("translation.postsToday") }}
                                     </router-link>
                                 </router-link>
                                 <router-link :to="{ name: 'posts.all', params: {action:'all', page: 1}}" tag="li" active-class="active" >
-                                    <router-link :to="{ name: 'posts.all', params: {action:'all', page: 1} }">
+                                    <router-link :to="{ name: 'posts.all', params: {action:'all', page: 1}}">
                                         {{ $t("translation.postsAll") }}
                                     </router-link>
                                 </router-link> 

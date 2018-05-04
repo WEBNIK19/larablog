@@ -89,17 +89,13 @@ const routes = [
     },
     {
         path: '/posts/:action/:page/:word',
-        name: 'posts.all',
+        name: 'posts.search',
         component: AllPosts,
-        meta: {
-        },
     },
     {
         path: '/posts/:action/:page',
         name: 'posts.all',
         component: AllPosts,
-        meta: {
-        },
     },
     // Must be the last entry in array.
     {

@@ -12598,6 +12598,7 @@ exports.default = {
         profile: 'Профиль',
         userAll: 'Все пользователи',
         user: 'Пользователь',
+        userSet: 'Создать пользователя',
         typeUserId: 'Идентификатор типа пользователя',
         UserId: 'Идентификатор пользователя',
         posts: 'Посты',
@@ -13431,14 +13432,12 @@ var routes = [{
     }
 }, {
     path: '/posts/:action/:page/:word',
-    name: 'posts.all',
-    component: _AllPosts2.default,
-    meta: {}
+    name: 'posts.search',
+    component: _AllPosts2.default
 }, {
     path: '/posts/:action/:page',
     name: 'posts.all',
-    component: _AllPosts2.default,
-    meta: {}
+    component: _AllPosts2.default
 },
 // Must be the last entry in array.
 {
@@ -21404,8 +21403,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = {
     watch: {
-        // eslint-disable-next-line
-        '$route': function $route(to, from) {
+        $route: function $route() {
             if (this.$route.params.action === 'all') {
                 this.$store.dispatch('getAllPosts', {
                     data: {

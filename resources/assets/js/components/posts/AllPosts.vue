@@ -12,8 +12,7 @@
 <script>
   export default{
       watch: {
-        // eslint-disable-next-line
-          '$route'(to, from) {
+          $route() {
               if (this.$route.params.action === 'all') {
                   this.$store.dispatch('getAllPosts', {
                       data:
